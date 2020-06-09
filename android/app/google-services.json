@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "333599770894",
+    "firebase_url": "https://shopchop-e31bc.firebaseio.com",
+    "project_id": "shopchop-e31bc",
+    "storage_bucket": "shopchop-e31bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333599770894:android:e15213a8bdd47f50a9ef5f",
+        "android_client_info": {
+          "package_name": "com.edwinrajz.shop_chop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333599770894-alt3r2u0hmm664bcu20n61e2fol106rh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBqaCbFOgO1DW7LS6Ed8v6709fDJvKRdw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333599770894-alt3r2u0hmm664bcu20n61e2fol106rh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

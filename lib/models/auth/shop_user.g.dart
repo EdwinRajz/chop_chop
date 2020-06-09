@@ -1,0 +1,268 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of shop_user;
+
+// **************************************************************************
+// BuiltValueGenerator
+// **************************************************************************
+
+Serializer<ShopUser> _$shopUserSerializer = new _$ShopUserSerializer();
+
+class _$ShopUserSerializer implements StructuredSerializer<ShopUser> {
+  @override
+  final Iterable<Type> types = const [ShopUser, _$ShopUser];
+  @override
+  final String wireName = 'ShopUser';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, ShopUser object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'savePassword',
+      serializers.serialize(object.savePassword,
+          specifiedType: const FullType(bool)),
+    ];
+    if (object.email != null) {
+      result
+        ..add('email')
+        ..add(serializers.serialize(object.email,
+            specifiedType: const FullType(String)));
+    }
+    if (object.phone != null) {
+      result
+        ..add('phone')
+        ..add(serializers.serialize(object.phone,
+            specifiedType: const FullType(String)));
+    }
+    if (object.verificationId != null) {
+      result
+        ..add('verificationId')
+        ..add(serializers.serialize(object.verificationId,
+            specifiedType: const FullType(String)));
+    }
+    if (object.smsCode != null) {
+      result
+        ..add('smsCode')
+        ..add(serializers.serialize(object.smsCode,
+            specifiedType: const FullType(String)));
+    }
+    if (object.password != null) {
+      result
+        ..add('password')
+        ..add(serializers.serialize(object.password,
+            specifiedType: const FullType(String)));
+    }
+    if (object.birthDate != null) {
+      result
+        ..add('birthDate')
+        ..add(serializers.serialize(object.birthDate,
+            specifiedType: const FullType(DateTime)));
+    }
+    return result;
+  }
+
+  @override
+  ShopUser deserialize(Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new ShopUserBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'email':
+          result.email = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'phone':
+          result.phone = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'verificationId':
+          result.verificationId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'smsCode':
+          result.smsCode = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'password':
+          result.password = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'birthDate':
+          result.birthDate = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime;
+          break;
+        case 'savePassword':
+          result.savePassword = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$ShopUser extends ShopUser {
+  @override
+  final String email;
+  @override
+  final String phone;
+  @override
+  final String verificationId;
+  @override
+  final String smsCode;
+  @override
+  final String password;
+  @override
+  final DateTime birthDate;
+  @override
+  final bool savePassword;
+
+  factory _$ShopUser([void Function(ShopUserBuilder) updates]) =>
+      (new ShopUserBuilder()..update(updates)).build();
+
+  _$ShopUser._(
+      {this.email,
+      this.phone,
+      this.verificationId,
+      this.smsCode,
+      this.password,
+      this.birthDate,
+      this.savePassword})
+      : super._() {
+    if (savePassword == null) {
+      throw new BuiltValueNullFieldError('ShopUser', 'savePassword');
+    }
+  }
+
+  @override
+  ShopUser rebuild(void Function(ShopUserBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  ShopUserBuilder toBuilder() => new ShopUserBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is ShopUser &&
+        email == other.email &&
+        phone == other.phone &&
+        verificationId == other.verificationId &&
+        smsCode == other.smsCode &&
+        password == other.password &&
+        birthDate == other.birthDate &&
+        savePassword == other.savePassword;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, email.hashCode), phone.hashCode),
+                        verificationId.hashCode),
+                    smsCode.hashCode),
+                password.hashCode),
+            birthDate.hashCode),
+        savePassword.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('ShopUser')
+          ..add('email', email)
+          ..add('phone', phone)
+          ..add('verificationId', verificationId)
+          ..add('smsCode', smsCode)
+          ..add('password', password)
+          ..add('birthDate', birthDate)
+          ..add('savePassword', savePassword))
+        .toString();
+  }
+}
+
+class ShopUserBuilder implements Builder<ShopUser, ShopUserBuilder> {
+  _$ShopUser _$v;
+
+  String _email;
+  String get email => _$this._email;
+  set email(String email) => _$this._email = email;
+
+  String _phone;
+  String get phone => _$this._phone;
+  set phone(String phone) => _$this._phone = phone;
+
+  String _verificationId;
+  String get verificationId => _$this._verificationId;
+  set verificationId(String verificationId) =>
+      _$this._verificationId = verificationId;
+
+  String _smsCode;
+  String get smsCode => _$this._smsCode;
+  set smsCode(String smsCode) => _$this._smsCode = smsCode;
+
+  String _password;
+  String get password => _$this._password;
+  set password(String password) => _$this._password = password;
+
+  DateTime _birthDate;
+  DateTime get birthDate => _$this._birthDate;
+  set birthDate(DateTime birthDate) => _$this._birthDate = birthDate;
+
+  bool _savePassword;
+  bool get savePassword => _$this._savePassword;
+  set savePassword(bool savePassword) => _$this._savePassword = savePassword;
+
+  ShopUserBuilder();
+
+  ShopUserBuilder get _$this {
+    if (_$v != null) {
+      _email = _$v.email;
+      _phone = _$v.phone;
+      _verificationId = _$v.verificationId;
+      _smsCode = _$v.smsCode;
+      _password = _$v.password;
+      _birthDate = _$v.birthDate;
+      _savePassword = _$v.savePassword;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(ShopUser other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$ShopUser;
+  }
+
+  @override
+  void update(void Function(ShopUserBuilder) updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$ShopUser build() {
+    final _$result = _$v ??
+        new _$ShopUser._(
+            email: email,
+            phone: phone,
+            verificationId: verificationId,
+            smsCode: smsCode,
+            password: password,
+            birthDate: birthDate,
+            savePassword: savePassword);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

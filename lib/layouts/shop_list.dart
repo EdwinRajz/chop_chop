@@ -1,0 +1,25 @@
+List<String> shops = <String>['Kaufland', 'Selgros', 'Auchan', 'Penny Market', 'Lidl', 'Carrefour', 'Metro', 'Cora'];
+List<String> items = <String>[
+  'Mere',
+  'Ciocolata',
+  'Detergent',
+  'Matura',
+  'Bere',
+  'Paine',
+  'Pateu',
+  'Iaurt',
+  'Inghetata',
+  'Bacon',
+  'Oua',
+  'Mere',
+  'Ciocolata',
+  'Detergent',
+  'Matura',
+  'Bere',
+  'Paine',
+  'Pateu',
+  'Iaurt',
+  'Inghetata',
+  'Bacon',
+  'Oua'
+];
