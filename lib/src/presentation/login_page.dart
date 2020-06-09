@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_chop/presentation/registration_page.dart';
+import 'package:shop_chop/src/presentation/registration_page.dart';
 
 import 'main_page.dart';
 
@@ -30,18 +30,20 @@ class _LoginPageState extends State<LoginPage> {
             height: 130,
             decoration: BoxDecoration(
               image: const DecorationImage(
-                image: AssetImage('lib/assets/logo.png'),
+                image: AssetImage('assets/logo.png'),
               ),
               border: Border.all(
+                width: 3.0,
                 color: Colors.green,
               ),
               borderRadius: const BorderRadius.all(
-                Radius.circular(200),
+                Radius.circular(400.0),
               ),
             ),
           ),
           Center(
             child: Container(
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: <Widget>[
                   const SizedBox(
@@ -51,12 +53,13 @@ class _LoginPageState extends State<LoginPage> {
                     controller: email,
                     obscureText: false,
                     decoration: InputDecoration(
+                      enabledBorder:OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.green, width: 3.0),
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
                       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                       labelText: 'email',
                       labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
                     ),
                   ),
                   const SizedBox(
@@ -66,15 +69,21 @@ class _LoginPageState extends State<LoginPage> {
                     controller: password,
                     obscureText: true,
                     decoration: InputDecoration(
+                      enabledBorder:OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.green, width: 3.0),
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
                       contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                       labelText: 'password',
                       labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
                     ),
                   ),
+                  const SizedBox(height: 32.0),
                   FlatButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    color: Colors.green,
                     onPressed: () {
                       Navigator.pushNamed(context, MainPage.id);
                     },

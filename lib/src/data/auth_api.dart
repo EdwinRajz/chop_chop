@@ -3,9 +3,8 @@ import 'package:built_collection/built_collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:shop_chop/models/auth/registration_info.dart';
-import 'package:shop_chop/models/auth/shop_user.dart';
-
+import 'package:shop_chop/src/models/auth/registration_info.dart';
+import 'package:shop_chop/src/models/auth/shop_user.dart';
 
 class AuthApi {
   const AuthApi({
@@ -15,7 +14,6 @@ class AuthApi {
         assert(firestore != null),
         _auth = auth,
         _firestore = firestore;
-
 
   final FirebaseAuth _auth;
   final Firestore _firestore;
@@ -38,11 +36,6 @@ class AuthApi {
     await _auth.signOut();
   }
 
-  /// Send an email containing the forgotten password to the user
-  Future<void> sendForgottenPassword(String email) async {
-    await _auth.sendPasswordResetEmail(email: email);
-  }
-
   ///Create a user
   Future<ShopUser> createUser(RegistrationInfo info) async {
     AuthResult result;
@@ -54,12 +47,11 @@ class AuthApi {
       assert(info.smsCode != null);
 
       final AuthCredential credential =
-      PhoneAuthProvider.getCredential(verificationId: info.verificationId, smsCode: info.smsCode);
+          PhoneAuthProvider.getCredential(verificationId: info.verificationId, smsCode: info.smsCode);
       result = await _auth.signInWithCredential(credential);
     }
     return _buildUser(result.user, info);
   }
-
 
   ///User
   Future<ShopUser> _buildUser(FirebaseUser firebaseUser, [RegistrationInfo info]) async {
@@ -76,17 +68,18 @@ class AuthApi {
     final ShopUser user = ShopUser((ShopUserBuilder b) {
       b
         ..uid = firebaseUser.uid
-        ..username = info.username
         ..email = info.email
         ..birthDate = info.birthDate
-        ..phone = info.phone
-        ..following = ListBuilder<String>();
+        ..phone = info.phone;
     });
     await _firestore.document('users/${user.uid}').setData(user.json);
     return user;
   }
 
-
-
-
+  Future<String> reserveUsername({@required String email, @required String displayName}) async {
+    if (email != null) {
+      final String username = email.split('@')[0];
+      return username;
+    }
+  }
 }

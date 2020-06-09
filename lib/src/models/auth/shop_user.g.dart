@@ -18,6 +18,8 @@ class _$ShopUserSerializer implements StructuredSerializer<ShopUser> {
   Iterable<Object> serialize(Serializers serializers, ShopUser object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
+      'uid',
+      serializers.serialize(object.uid, specifiedType: const FullType(String)),
       'savePassword',
       serializers.serialize(object.savePassword,
           specifiedType: const FullType(bool)),
@@ -72,6 +74,10 @@ class _$ShopUserSerializer implements StructuredSerializer<ShopUser> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case 'uid':
+          result.uid = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'email':
           result.email = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -109,6 +115,8 @@ class _$ShopUserSerializer implements StructuredSerializer<ShopUser> {
 
 class _$ShopUser extends ShopUser {
   @override
+  final String uid;
+  @override
   final String email;
   @override
   final String phone;
@@ -127,7 +135,8 @@ class _$ShopUser extends ShopUser {
       (new ShopUserBuilder()..update(updates)).build();
 
   _$ShopUser._(
-      {this.email,
+      {this.uid,
+      this.email,
       this.phone,
       this.verificationId,
       this.smsCode,
@@ -135,6 +144,9 @@ class _$ShopUser extends ShopUser {
       this.birthDate,
       this.savePassword})
       : super._() {
+    if (uid == null) {
+      throw new BuiltValueNullFieldError('ShopUser', 'uid');
+    }
     if (savePassword == null) {
       throw new BuiltValueNullFieldError('ShopUser', 'savePassword');
     }
@@ -151,6 +163,7 @@ class _$ShopUser extends ShopUser {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ShopUser &&
+        uid == other.uid &&
         email == other.email &&
         phone == other.phone &&
         verificationId == other.verificationId &&
@@ -166,7 +179,9 @@ class _$ShopUser extends ShopUser {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, email.hashCode), phone.hashCode),
+                    $jc(
+                        $jc($jc($jc(0, uid.hashCode), email.hashCode),
+                            phone.hashCode),
                         verificationId.hashCode),
                     smsCode.hashCode),
                 password.hashCode),
@@ -177,6 +192,7 @@ class _$ShopUser extends ShopUser {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('ShopUser')
+          ..add('uid', uid)
           ..add('email', email)
           ..add('phone', phone)
           ..add('verificationId', verificationId)
@@ -190,6 +206,10 @@ class _$ShopUser extends ShopUser {
 
 class ShopUserBuilder implements Builder<ShopUser, ShopUserBuilder> {
   _$ShopUser _$v;
+
+  String _uid;
+  String get uid => _$this._uid;
+  set uid(String uid) => _$this._uid = uid;
 
   String _email;
   String get email => _$this._email;
@@ -224,6 +244,7 @@ class ShopUserBuilder implements Builder<ShopUser, ShopUserBuilder> {
 
   ShopUserBuilder get _$this {
     if (_$v != null) {
+      _uid = _$v.uid;
       _email = _$v.email;
       _phone = _$v.phone;
       _verificationId = _$v.verificationId;
@@ -253,6 +274,7 @@ class ShopUserBuilder implements Builder<ShopUser, ShopUserBuilder> {
   _$ShopUser build() {
     final _$result = _$v ??
         new _$ShopUser._(
+            uid: uid,
             email: email,
             phone: phone,
             verificationId: verificationId,

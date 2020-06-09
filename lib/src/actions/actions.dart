@@ -1,4 +1,4 @@
-import 'package:shop_chop/models/auth/shop_user.dart';
+import 'package:shop_chop/src/models/auth/shop_user.dart';
 
 abstract class AppAction {}
 

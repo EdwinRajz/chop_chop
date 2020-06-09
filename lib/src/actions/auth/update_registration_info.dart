@@ -1,8 +1,8 @@
 library update_registration_info;
 
 import 'package:built_value/built_value.dart';
-import 'package:shop_chop/actions/actions.dart';
-import 'package:shop_chop/models/auth/registration_info.dart';
+import 'package:shop_chop/src/actions/actions.dart';
+import 'package:shop_chop/src/models/auth/registration_info.dart';
 
 part 'update_registration_info.g.dart';
 

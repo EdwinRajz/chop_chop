@@ -2,7 +2,7 @@ library shop_user;
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:shop_chop/models/serializers.dart';
+import 'package:shop_chop/src/models/serializers.dart';
 
 part 'shop_user.g.dart';
 
@@ -12,6 +12,8 @@ abstract class ShopUser implements Built<ShopUser, ShopUserBuilder> {
   factory ShopUser.fromJson(Map<dynamic, dynamic> json) => serializers.deserializeWith(serializer, json);
 
   ShopUser._();
+
+  String get uid;
 
   @nullable
   String get email;

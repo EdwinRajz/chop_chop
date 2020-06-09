@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop_chop/layouts/shop_list.dart';
+import 'package:shop_chop/src/layouts/shop_list.dart';
+
 
 class CartPage extends StatelessWidget {
   static const String id = 'Cart';
