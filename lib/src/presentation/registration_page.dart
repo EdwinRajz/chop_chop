@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:shop_chop/src/actions/auth/reserve_username.dart';
 import 'package:shop_chop/src/actions/auth/update_registration_info.dart';
 import 'package:shop_chop/src/containers/registration_info_container.dart';
 import 'package:shop_chop/src/models/auth/registration_info.dart';
@@ -40,32 +41,35 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     const SizedBox(
                       height: 32.0,
                     ),
-                    RegistrationInfoContainer(builder: (BuildContext context, RegistrationInfo info) {
-                      return TextFormField(
-                        controller: nameController,
-                        keyboardType: TextInputType.text,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                          labelText: 'name',
-                          labelStyle: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        validator: (String value) {
-                          if (value.trim().length < 3) {
-                            return 'Name is too short';
-                          } else {
-                            return null;
-                          }
-                        },
-                        onChanged: (String value) {
-                          final RegistrationInfo newInfo =
-                              info.rebuild((RegistrationInfoBuilder b) => b.username = value);
-                          StoreProvider.of<ShopState>(context).dispatch(
-                            UpdateRegistrationInfo(newInfo),
-                          );
-                        },
-                      );
-                    }),
+                    RegistrationInfoContainer(
+                      builder: (BuildContext context, RegistrationInfo info) {
+                        return TextFormField(
+                          controller: nameController,
+                          keyboardType: TextInputType.text,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                            labelText: 'name',
+                            labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          validator: (String value) {
+                            if (value.trim().length < 3) {
+                              return 'Name is too short';
+                            } else {
+                              return null;
+                            }
+                          },
+                          onChanged: (String value) {
+                            final RegistrationInfo newInfo =
+                                info.rebuild((RegistrationInfoBuilder b) => b.username = value);
+
+                            StoreProvider.of<ShopState>(context).dispatch(
+                              UpdateRegistrationInfo(newInfo),
+                            );
+                          },
+                        );
+                      },
+                    ),
                     const SizedBox(
                       height: 16.0,
                     ),
@@ -126,6 +130,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     ),
                     FlatButton(
                       onPressed: () {
+                        StoreProvider.of<ShopState>(context).dispatch(ReserveUsername());
                         Navigator.pushNamed(context, MainPage.id);
                       },
                       child: const Text('Register'),
