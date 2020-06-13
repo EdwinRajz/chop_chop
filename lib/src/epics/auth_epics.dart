@@ -48,6 +48,7 @@ class AuthEpics {
         .flatMap((SignUp action) => _authApi
             .createUser(store.state.auth.info)
             .asStream()
+            .doOnData(print)
             .map<AppAction>((ShopUser user) => SignUpSuccessful(user))
             .onErrorReturnWith((dynamic error) => SignUpError(error))
             .doOnData(action.result));

@@ -24,7 +24,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
-  bool isLoading = false;
 
   DateTime selectedDate = DateTime.now();
   final TextEditingController _date = TextEditingController();
@@ -222,17 +221,22 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(height: 48.0),
                 Builder(
                   builder: (BuildContext context) {
-                    return RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
+                    return Container(
+                      margin: EdgeInsets.only(
+                          right: MediaQuery.of(context).size.width * 0.3,
+                          left: MediaQuery.of(context).size.width * 0.3),
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        color: Colors.green,
+                        onPressed: () {
+                          if (Form.of(context).validate()) {
+                            StoreProvider.of<ShopState>(context).dispatch(SignUp(_result));
+                          }
+                        },
+                        child: const Text('Register'),
                       ),
-                      color: Colors.green,
-                      onPressed: () {
-                        if (Form.of(context).validate()) {
-                          StoreProvider.of<ShopState>(context).dispatch(SignUp(_result));
-                        }
-                      },
-                      child: const Text('Register'),
                     );
                   },
                 ),

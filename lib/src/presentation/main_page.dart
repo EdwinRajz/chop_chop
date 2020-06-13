@@ -11,6 +11,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
