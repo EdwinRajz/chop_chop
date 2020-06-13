@@ -9,7 +9,6 @@ Reducer<AuthState> authReducer = combineReducers<AuthState>(<Reducer<AuthState>>
   TypedReducer<AuthState, UpdateRegistrationInfo>(_updateRegistrationInfo),
 ]);
 
-
 AuthState _userAction(AuthState state, UserAction action) {
   return state.rebuild((AuthStateBuilder b) => b.user = action.user?.toBuilder());
 }
@@ -17,4 +16,3 @@ AuthState _userAction(AuthState state, UserAction action) {
 AuthState _updateRegistrationInfo(AuthState state, UpdateRegistrationInfo action) {
   return state.rebuild((AuthStateBuilder b) => b.info = action.info.toBuilder());
 }
-

@@ -1,4 +1,5 @@
 library app_state;
+
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -9,11 +10,14 @@ part 'shop_state.g.dart';
 
 abstract class ShopState implements Built<ShopState, ShopStateBuilder> {
   factory ShopState([void Function(ShopStateBuilder b) updates]) = _$ShopState;
+
   factory ShopState.fromJson(Map<dynamic, dynamic> json) => serializers.deserializeWith(serializer, json);
+
   ShopState._();
 
   AuthState get auth;
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this);
+
   static Serializer<ShopState> get serializer => _$shopStateSerializer;
 }

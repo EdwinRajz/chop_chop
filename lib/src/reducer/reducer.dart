@@ -1,4 +1,3 @@
-
 import 'package:shop_chop/src/actions/actions.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 
@@ -15,8 +14,6 @@ ShopState reducer(ShopState state, dynamic action) {
 
   print(action);
   return state.rebuild((ShopStateBuilder b) {
-    b
-      ..auth = authReducer(state.auth, action).toBuilder();
-
+    b.. auth = authReducer(state.auth, action).toBuilder();
   });
 }

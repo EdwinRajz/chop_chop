@@ -4,19 +4,16 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:shop_chop/src/models/serializers.dart';
 
-
 part 'registration_info.g.dart';
 
 abstract class RegistrationInfo implements Built<RegistrationInfo, RegistrationInfoBuilder> {
   factory RegistrationInfo() {
-    return _$RegistrationInfo((RegistrationInfoBuilder b) => b.savePassword = false);
+    return _$RegistrationInfo((RegistrationInfoBuilder b) {});
   }
 
   RegistrationInfo._();
 
   factory RegistrationInfo.fromJson(Map<dynamic, dynamic> json) => serializers.deserializeWith(serializer, json);
-
-
 
   @nullable
   String get email;
@@ -25,23 +22,17 @@ abstract class RegistrationInfo implements Built<RegistrationInfo, RegistrationI
   String get phone;
 
   @nullable
-  String get verificationId;
-
-  @nullable
-  String get smsCode;
-
-
-  @nullable
   String get password;
 
   @nullable
   DateTime get birthDate;
 
   @nullable
-  String get username;
+  String get name;
 
+  @nullable
+  String get address;
 
-  bool get savePassword;
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this);
 

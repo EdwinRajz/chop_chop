@@ -50,36 +50,52 @@ class _LoginPageState extends State<LoginPage> {
                     height: 32.0,
                   ),
                   TextFormField(
-                    controller: email,
                     obscureText: false,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                      enabledBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.green, width: 3.0),
-                        borderRadius: BorderRadius.circular(25.0),
+                      prefixIcon: Icon(
+                        Icons.email,
+                        color: Colors.green,
                       ),
-                      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      contentPadding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green, width: 3.0),
+                      ),
                       labelText: 'email',
                       labelStyle: TextStyle(fontWeight: FontWeight.bold),
                     ),
+                    validator: (String value) {
+                      if (value.length > 6) {
+                        return 'email is too short';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onChanged: (String value) {},
                   ),
                   const SizedBox(
                     height: 32.0,
                   ),
                   TextFormField(
-                    controller: password,
                     obscureText: true,
                     decoration: InputDecoration(
-                      enabledBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.green, width: 3.0),
-                        borderRadius: BorderRadius.circular(25.0),
+                      prefixIcon: Icon(
+                        Icons.vpn_key,
+                        color: Colors.green,
                       ),
-                      contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      contentPadding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green, width: 3.0),
+                      ),
                       labelText: 'password',
                       labelStyle: TextStyle(fontWeight: FontWeight.bold),
                     ),
+                    onChanged: (String value) {
+
+                    },
                   ),
                   const SizedBox(height: 32.0),
-                  FlatButton(
+                  RaisedButton(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25.0),
                     ),

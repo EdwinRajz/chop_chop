@@ -43,12 +43,6 @@ class AuthApi {
       result = await _auth.createUserWithEmailAndPassword(email: info.email, password: info.password);
     } else {
       assert(info.phone != null);
-      assert(info.verificationId != null);
-      assert(info.smsCode != null);
-
-      final AuthCredential credential =
-          PhoneAuthProvider.getCredential(verificationId: info.verificationId, smsCode: info.smsCode);
-      result = await _auth.signInWithCredential(credential);
     }
     return _buildUser(result.user, info);
   }
@@ -76,10 +70,4 @@ class AuthApi {
     return user;
   }
 
-  Future<String> reserveUsername({@required String email, @required String displayName}) async {
-    if (email != null) {
-      final String username = email.split('@')[0];
-      return username;
-    }
-  }
 }

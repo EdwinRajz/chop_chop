@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_chop/src/layouts/shop_list.dart';
 
-
 import 'cart_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -65,10 +64,9 @@ class _MainPageState extends State<MainPage> {
                   return Container(
                       color: Colors.grey,
                       margin: EdgeInsets.all(6.0),
-                      child: Column(
+                      child: ListView(
                         children: <Widget>[
-                          Image.network(
-                              'https://www.auchan.ro/public/images/h4e/h92/h00/borsec-apa-plata-2l-8857772064798.jpg'),
+                          Image.network(items[index]),
                           Text('${items[index]}'),
                         ],
                       ));

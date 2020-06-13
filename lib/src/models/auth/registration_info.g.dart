@@ -19,11 +19,7 @@ class _$RegistrationInfoSerializer
   @override
   Iterable<Object> serialize(Serializers serializers, RegistrationInfo object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'savePassword',
-      serializers.serialize(object.savePassword,
-          specifiedType: const FullType(bool)),
-    ];
+    final result = <Object>[];
     if (object.email != null) {
       result
         ..add('email')
@@ -34,18 +30,6 @@ class _$RegistrationInfoSerializer
       result
         ..add('phone')
         ..add(serializers.serialize(object.phone,
-            specifiedType: const FullType(String)));
-    }
-    if (object.verificationId != null) {
-      result
-        ..add('verificationId')
-        ..add(serializers.serialize(object.verificationId,
-            specifiedType: const FullType(String)));
-    }
-    if (object.smsCode != null) {
-      result
-        ..add('smsCode')
-        ..add(serializers.serialize(object.smsCode,
             specifiedType: const FullType(String)));
     }
     if (object.password != null) {
@@ -60,10 +44,16 @@ class _$RegistrationInfoSerializer
         ..add(serializers.serialize(object.birthDate,
             specifiedType: const FullType(DateTime)));
     }
-    if (object.username != null) {
+    if (object.name != null) {
       result
-        ..add('username')
-        ..add(serializers.serialize(object.username,
+        ..add('name')
+        ..add(serializers.serialize(object.name,
+            specifiedType: const FullType(String)));
+    }
+    if (object.address != null) {
+      result
+        ..add('address')
+        ..add(serializers.serialize(object.address,
             specifiedType: const FullType(String)));
     }
     return result;
@@ -89,14 +79,6 @@ class _$RegistrationInfoSerializer
           result.phone = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'verificationId':
-          result.verificationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'smsCode':
-          result.smsCode = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'password':
           result.password = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -105,13 +87,13 @@ class _$RegistrationInfoSerializer
           result.birthDate = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime;
           break;
-        case 'username':
-          result.username = serializers.deserialize(value,
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'savePassword':
-          result.savePassword = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+        case 'address':
+          result.address = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -126,17 +108,13 @@ class _$RegistrationInfo extends RegistrationInfo {
   @override
   final String phone;
   @override
-  final String verificationId;
-  @override
-  final String smsCode;
-  @override
   final String password;
   @override
   final DateTime birthDate;
   @override
-  final String username;
+  final String name;
   @override
-  final bool savePassword;
+  final String address;
 
   factory _$RegistrationInfo(
           [void Function(RegistrationInfoBuilder) updates]) =>
@@ -145,17 +123,11 @@ class _$RegistrationInfo extends RegistrationInfo {
   _$RegistrationInfo._(
       {this.email,
       this.phone,
-      this.verificationId,
-      this.smsCode,
       this.password,
       this.birthDate,
-      this.username,
-      this.savePassword})
-      : super._() {
-    if (savePassword == null) {
-      throw new BuiltValueNullFieldError('RegistrationInfo', 'savePassword');
-    }
-  }
+      this.name,
+      this.address})
+      : super._();
 
   @override
   RegistrationInfo rebuild(void Function(RegistrationInfoBuilder) updates) =>
@@ -171,12 +143,10 @@ class _$RegistrationInfo extends RegistrationInfo {
     return other is RegistrationInfo &&
         email == other.email &&
         phone == other.phone &&
-        verificationId == other.verificationId &&
-        smsCode == other.smsCode &&
         password == other.password &&
         birthDate == other.birthDate &&
-        username == other.username &&
-        savePassword == other.savePassword;
+        name == other.name &&
+        address == other.address;
   }
 
   @override
@@ -184,15 +154,11 @@ class _$RegistrationInfo extends RegistrationInfo {
     return $jf($jc(
         $jc(
             $jc(
-                $jc(
-                    $jc(
-                        $jc($jc($jc(0, email.hashCode), phone.hashCode),
-                            verificationId.hashCode),
-                        smsCode.hashCode),
+                $jc($jc($jc(0, email.hashCode), phone.hashCode),
                     password.hashCode),
                 birthDate.hashCode),
-            username.hashCode),
-        savePassword.hashCode));
+            name.hashCode),
+        address.hashCode));
   }
 
   @override
@@ -200,12 +166,10 @@ class _$RegistrationInfo extends RegistrationInfo {
     return (newBuiltValueToStringHelper('RegistrationInfo')
           ..add('email', email)
           ..add('phone', phone)
-          ..add('verificationId', verificationId)
-          ..add('smsCode', smsCode)
           ..add('password', password)
           ..add('birthDate', birthDate)
-          ..add('username', username)
-          ..add('savePassword', savePassword))
+          ..add('name', name)
+          ..add('address', address))
         .toString();
   }
 }
@@ -222,15 +186,6 @@ class RegistrationInfoBuilder
   String get phone => _$this._phone;
   set phone(String phone) => _$this._phone = phone;
 
-  String _verificationId;
-  String get verificationId => _$this._verificationId;
-  set verificationId(String verificationId) =>
-      _$this._verificationId = verificationId;
-
-  String _smsCode;
-  String get smsCode => _$this._smsCode;
-  set smsCode(String smsCode) => _$this._smsCode = smsCode;
-
   String _password;
   String get password => _$this._password;
   set password(String password) => _$this._password = password;
@@ -239,13 +194,13 @@ class RegistrationInfoBuilder
   DateTime get birthDate => _$this._birthDate;
   set birthDate(DateTime birthDate) => _$this._birthDate = birthDate;
 
-  String _username;
-  String get username => _$this._username;
-  set username(String username) => _$this._username = username;
+  String _name;
+  String get name => _$this._name;
+  set name(String name) => _$this._name = name;
 
-  bool _savePassword;
-  bool get savePassword => _$this._savePassword;
-  set savePassword(bool savePassword) => _$this._savePassword = savePassword;
+  String _address;
+  String get address => _$this._address;
+  set address(String address) => _$this._address = address;
 
   RegistrationInfoBuilder();
 
@@ -253,12 +208,10 @@ class RegistrationInfoBuilder
     if (_$v != null) {
       _email = _$v.email;
       _phone = _$v.phone;
-      _verificationId = _$v.verificationId;
-      _smsCode = _$v.smsCode;
       _password = _$v.password;
       _birthDate = _$v.birthDate;
-      _username = _$v.username;
-      _savePassword = _$v.savePassword;
+      _name = _$v.name;
+      _address = _$v.address;
       _$v = null;
     }
     return this;
@@ -283,12 +236,10 @@ class RegistrationInfoBuilder
         new _$RegistrationInfo._(
             email: email,
             phone: phone,
-            verificationId: verificationId,
-            smsCode: smsCode,
             password: password,
             birthDate: birthDate,
-            username: username,
-            savePassword: savePassword);
+            name: name,
+            address: address);
     replace(_$result);
     return _$result;
   }

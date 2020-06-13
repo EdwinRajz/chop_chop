@@ -31,6 +31,9 @@ abstract class ShopUser implements Built<ShopUser, ShopUserBuilder> {
   String get password;
 
   @nullable
+  String get address;
+
+  @nullable
   DateTime get birthDate;
 
   bool get savePassword;
