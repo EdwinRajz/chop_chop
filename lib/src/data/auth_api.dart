@@ -41,8 +41,6 @@ class AuthApi {
     AuthResult result;
     if (info.email != null) {
       result = await _auth.createUserWithEmailAndPassword(email: info.email, password: info.password);
-    } else {
-      assert(info.phone != null);
     }
     return _buildUser(result.user, info);
   }

@@ -5,7 +5,6 @@ import 'package:shop_chop/src/actions/auth/sign_up.dart';
 import 'package:shop_chop/src/actions/auth/update_registration_info.dart';
 import 'package:shop_chop/src/containers/registration_info_container.dart';
 import 'package:shop_chop/src/models/auth/registration_info.dart';
-import 'package:shop_chop/src/models/auth/shop_user.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 
 import 'main_page.dart';
@@ -84,7 +83,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     labelStyle: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   validator: (String value) {
-                    if (value.trim().length > 3) {
+                    if (value.trim().length < 3) {
                       return 'Name is too short';
                     } else {
                       return null;
@@ -92,9 +91,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   },
                   onChanged: (String value) {
                     final RegistrationInfo newInfo = info.rebuild((RegistrationInfoBuilder b) => b.name = value);
-                    StoreProvider.of<ShopState>(context).dispatch(
-                      UpdateRegistrationInfo(newInfo),
-                    );
+                    StoreProvider.of<ShopState>(context).dispatch(UpdateRegistrationInfo(newInfo));
                   },
                 ),
                 const SizedBox(height: 16.0),
@@ -114,7 +111,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     labelStyle: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   validator: (String value) {
-                    if (value.length > 6) {
+                    if (value.length < 6) {
                       return 'email is too short';
                     } else {
                       return null;

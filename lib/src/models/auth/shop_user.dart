@@ -36,7 +36,6 @@ abstract class ShopUser implements Built<ShopUser, ShopUserBuilder> {
   @nullable
   DateTime get birthDate;
 
-  bool get savePassword;
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this);
 

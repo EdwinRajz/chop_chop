@@ -20,9 +20,6 @@ class _$ShopUserSerializer implements StructuredSerializer<ShopUser> {
     final result = <Object>[
       'uid',
       serializers.serialize(object.uid, specifiedType: const FullType(String)),
-      'savePassword',
-      serializers.serialize(object.savePassword,
-          specifiedType: const FullType(bool)),
     ];
     if (object.email != null) {
       result
@@ -112,10 +109,6 @@ class _$ShopUserSerializer implements StructuredSerializer<ShopUser> {
           result.birthDate = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime;
           break;
-        case 'savePassword':
-          result.savePassword = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          break;
       }
     }
 
@@ -140,8 +133,6 @@ class _$ShopUser extends ShopUser {
   final String address;
   @override
   final DateTime birthDate;
-  @override
-  final bool savePassword;
 
   factory _$ShopUser([void Function(ShopUserBuilder) updates]) =>
       (new ShopUserBuilder()..update(updates)).build();
@@ -154,14 +145,10 @@ class _$ShopUser extends ShopUser {
       this.smsCode,
       this.password,
       this.address,
-      this.birthDate,
-      this.savePassword})
+      this.birthDate})
       : super._() {
     if (uid == null) {
       throw new BuiltValueNullFieldError('ShopUser', 'uid');
-    }
-    if (savePassword == null) {
-      throw new BuiltValueNullFieldError('ShopUser', 'savePassword');
     }
   }
 
@@ -183,8 +170,7 @@ class _$ShopUser extends ShopUser {
         smsCode == other.smsCode &&
         password == other.password &&
         address == other.address &&
-        birthDate == other.birthDate &&
-        savePassword == other.savePassword;
+        birthDate == other.birthDate;
   }
 
   @override
@@ -194,15 +180,13 @@ class _$ShopUser extends ShopUser {
             $jc(
                 $jc(
                     $jc(
-                        $jc(
-                            $jc($jc($jc(0, uid.hashCode), email.hashCode),
-                                phone.hashCode),
-                            verificationId.hashCode),
-                        smsCode.hashCode),
-                    password.hashCode),
-                address.hashCode),
-            birthDate.hashCode),
-        savePassword.hashCode));
+                        $jc($jc($jc(0, uid.hashCode), email.hashCode),
+                            phone.hashCode),
+                        verificationId.hashCode),
+                    smsCode.hashCode),
+                password.hashCode),
+            address.hashCode),
+        birthDate.hashCode));
   }
 
   @override
@@ -215,8 +199,7 @@ class _$ShopUser extends ShopUser {
           ..add('smsCode', smsCode)
           ..add('password', password)
           ..add('address', address)
-          ..add('birthDate', birthDate)
-          ..add('savePassword', savePassword))
+          ..add('birthDate', birthDate))
         .toString();
   }
 }
@@ -257,10 +240,6 @@ class ShopUserBuilder implements Builder<ShopUser, ShopUserBuilder> {
   DateTime get birthDate => _$this._birthDate;
   set birthDate(DateTime birthDate) => _$this._birthDate = birthDate;
 
-  bool _savePassword;
-  bool get savePassword => _$this._savePassword;
-  set savePassword(bool savePassword) => _$this._savePassword = savePassword;
-
   ShopUserBuilder();
 
   ShopUserBuilder get _$this {
@@ -273,7 +252,6 @@ class ShopUserBuilder implements Builder<ShopUser, ShopUserBuilder> {
       _password = _$v.password;
       _address = _$v.address;
       _birthDate = _$v.birthDate;
-      _savePassword = _$v.savePassword;
       _$v = null;
     }
     return this;
@@ -303,8 +281,7 @@ class ShopUserBuilder implements Builder<ShopUser, ShopUserBuilder> {
             smsCode: smsCode,
             password: password,
             address: address,
-            birthDate: birthDate,
-            savePassword: savePassword);
+            birthDate: birthDate);
     replace(_$result);
     return _$result;
   }
