@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:shop_chop/src/containers/registration_info_container.dart';
 import 'package:shop_chop/src/layouts/shop_list.dart';
 import 'package:shop_chop/src/models/auth/registration_info.dart';
 import 'package:shop_chop/src/models/auth/shop_user.dart';
+
 
 import 'cart_page.dart';
 
@@ -15,7 +17,10 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+
   bool isLoading = false;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +96,7 @@ class _MainPageState extends State<MainPage> {
                       margin: EdgeInsets.all(3.0),
                       child: ListView(
                         children: <Widget>[
+                          //Image.network(productNames[index]['title']),
                           Image.network(items[index]),
                           Text('${items[index]}'),
                         ],
