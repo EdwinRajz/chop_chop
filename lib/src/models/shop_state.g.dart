@@ -21,6 +21,9 @@ class _$ShopStateSerializer implements StructuredSerializer<ShopState> {
       'auth',
       serializers.serialize(object.auth,
           specifiedType: const FullType(AuthState)),
+      'product',
+      serializers.serialize(object.product,
+          specifiedType: const FullType(ProductState)),
     ];
 
     return result;
@@ -41,6 +44,10 @@ class _$ShopStateSerializer implements StructuredSerializer<ShopState> {
           result.auth.replace(serializers.deserialize(value,
               specifiedType: const FullType(AuthState)) as AuthState);
           break;
+        case 'product':
+          result.product.replace(serializers.deserialize(value,
+              specifiedType: const FullType(ProductState)) as ProductState);
+          break;
       }
     }
 
@@ -51,13 +58,18 @@ class _$ShopStateSerializer implements StructuredSerializer<ShopState> {
 class _$ShopState extends ShopState {
   @override
   final AuthState auth;
+  @override
+  final ProductState product;
 
   factory _$ShopState([void Function(ShopStateBuilder) updates]) =>
       (new ShopStateBuilder()..update(updates)).build();
 
-  _$ShopState._({this.auth}) : super._() {
+  _$ShopState._({this.auth, this.product}) : super._() {
     if (auth == null) {
       throw new BuiltValueNullFieldError('ShopState', 'auth');
+    }
+    if (product == null) {
+      throw new BuiltValueNullFieldError('ShopState', 'product');
     }
   }
 
@@ -71,17 +83,19 @@ class _$ShopState extends ShopState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ShopState && auth == other.auth;
+    return other is ShopState && auth == other.auth && product == other.product;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, auth.hashCode));
+    return $jf($jc($jc(0, auth.hashCode), product.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ShopState')..add('auth', auth))
+    return (newBuiltValueToStringHelper('ShopState')
+          ..add('auth', auth)
+          ..add('product', product))
         .toString();
   }
 }
@@ -93,11 +107,17 @@ class ShopStateBuilder implements Builder<ShopState, ShopStateBuilder> {
   AuthStateBuilder get auth => _$this._auth ??= new AuthStateBuilder();
   set auth(AuthStateBuilder auth) => _$this._auth = auth;
 
+  ProductStateBuilder _product;
+  ProductStateBuilder get product =>
+      _$this._product ??= new ProductStateBuilder();
+  set product(ProductStateBuilder product) => _$this._product = product;
+
   ShopStateBuilder();
 
   ShopStateBuilder get _$this {
     if (_$v != null) {
       _auth = _$v.auth?.toBuilder();
+      _product = _$v.product?.toBuilder();
       _$v = null;
     }
     return this;
@@ -120,12 +140,15 @@ class ShopStateBuilder implements Builder<ShopState, ShopStateBuilder> {
   _$ShopState build() {
     _$ShopState _$result;
     try {
-      _$result = _$v ?? new _$ShopState._(auth: auth.build());
+      _$result = _$v ??
+          new _$ShopState._(auth: auth.build(), product: product.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'auth';
         auth.build();
+        _$failedField = 'product';
+        product.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'ShopState', _$failedField, e.toString());

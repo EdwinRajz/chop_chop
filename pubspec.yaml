@@ -26,6 +26,7 @@ dependencies:
   algolia: ^0.1.7
   http: ^0.12.1
   uuid: ^2.1.0
+  firebase_storage: ^3.1.6
 
   cupertino_icons: ^0.1.3
 

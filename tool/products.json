@@ -6,7 +6,6 @@
     "description": "Samponul Nivea men strong power curata parul si scalpul delicat, in timp ce formula cu minerale marine revitalizeaza si fortifica parul pentru un aspect sanatos.\n\nAsigura echilibrul perfect intre aromele rafinate ale esentelor naturale si tehnologia moderna de ingrijire a parului.\nImbogatit cu minerale marine, samponul intareste firul de par si ii ofera un aspect sanatos, pentru intreaga zi.",
     "category": "healthcare"
   },
-
   {
     "title": "Sampon Nivea men active clean, 400 ml",
     "imageUrl": "https://www.auchan.ro/public/images/h15/hd5/h00/sampon-nivea-men-active-clean-400-ml-8918884352030.jpg",
@@ -14,7 +13,6 @@
     "description": "Sampon Nivea men active clean foloseste beneficiile carbunelui activ, cunoscut pentru proprietatile sale de curatare.\nCurata in profunzime parul si indeparteaza impuritatile – excesul de sebum si produse de styling.\nPotrivit pentru folosirea zilnica - pentru un par curat si o senzatie de prospetime.",
     "category": "Shampoo"
   },
-
   {
     "title": "Sampon Kallos cu ulei de argan 1 L",
     "imageUrl": "https://www.auchan.ro/public/images/h66/h98/h00/sampon-kallos-cu-ulei-de-argan-1-l-8868733255710.jpg",
@@ -119,6 +117,75 @@
     "price": 15.30,
     "description": "Cafea 100% Arabica Amaroy Extra",
     "category": "Coffee"
+  },
+  {
+    "title": "Inghetata Carte d'Or cu ciocolata si nuca de cocos, 900 ml",
+    "imageUrl": "https://www.auchan.ro/public/images/h1f/h7c/h00/inghetata-carte-d-or-cu-ciocolata-si-nuca-de-cocos-900-ml-8912146956318.jpg",
+    "price": 15.25,
+    "description": "Inghetata cu nuca de cocos si ciocolata cu lapte, acoperita cu fugi de cocos.",
+    "category": "Ice cream"
+  },
+  {
+    "title": "Inghetata Napoca Scarisoara cu vanilie si cacao, 800 ml",
+    "imageUrl": "https://www.auchan.ro/store/Inghetata-Napoca-Scarisoara-cu-vanilie-si-cacao%2C-800-ml/p/127377",
+    "price": 8.45,
+    "description": "Inghetata cu cacao si aroma de vanilie.",
+    "category": "Ice cream"
+  },
+  {
+    "title": "Inghetata de ciocolata Betty Ice cu bucati de ciocolata, 200 ml",
+    "imageUrl": "https://www.auchan.ro/public/images/ha5/h2f/h00/inghetata-de-ciocolata-betty-ice-cu-bucati-de-ciocolata-200-ml-8909435404318.jpg",
+    "price": 7.50,
+    "description": "Inghetata cu bucati de ciocolata 200 ml",
+    "category": "Ice cream"
+  },
+  {
+    "title": "Inghetata Carte d'Or cu capsuni, 750 ml",
+    "imageUrl": "https://www.auchan.ro/public/images/h88/h7e/h00/inghetata-carte-d-or-cu-capsuni-750-ml-8912138371102.png",
+    "price": 16.60,
+    "description": "Inghetata cu capsune si bucatele de capsune confiate.",
+    "category": "Ice cream"
+  },
+  {
+    "title": "Inghetata Siviero Maria cu fructe de padure, 1 l",
+    "imageUrl": "https://www.auchan.ro/public/images/hb6/h3c/h00/inghetata-siviero-maria-cu-fructe-de-padure-1l-8839851507742.png",
+    "price": 22.70,
+    "description": "Inghetata italiana cu sirop de fructe de padure (16%) si fructe de padure semi-zaharisite (8%).",
+    "category": "Ice Cream"
+  },
+  {
+    "title": "Pachet cu inghetata Snickers, 288 g, 6 batoane",
+    "imageUrl": "https://www.auchan.ro/public/images/he7/hb7/h00/pachet-cu-inghetata-snickers-288-g-6-batoane-8905047900190.jpg",
+    "price": 22.50,
+    "description": "Pachet cu 6 inghetate snickers.\n6 batoane de inghetata cu ciocolata cu lapte si miez de nuga moale, caramel si arahide proaspat prajite.\nO combinatie de gust dulce-sarat.",
+    "category": "Ice Cream"
+  },
+  {
+    "title": "Lapte UHT Muller, 1 l",
+    "imageUrl": "https://www.auchan.ro/public/images/h3a/hb2/h00/lapte-uht-muller-1-l-8886937780254.jpg",
+    "price": 5.45,
+    "description": "Lapte ultrapasteurizat cu 3.5% grasime.",
+    "category": "Milk"
+  },
+  {
+    "title": "Lapte UHT Pouce 1.5% grasime 1L",
+    "imageUrl": "https://www.auchan.ro/public/images/h1e/ha5/h00/lapte-uht-pouce-1-l-8917356445726.jpg",
+    "price": 3.20,
+    "description": "Lapte UHT cu 1.5% grasime, ultrapasteurizat la temperaturi inalte.\n\nDe aceea, acest lapte este natural, fara conservanti si de cea mai buna calitate; mentinandu-si prospetimea o perioada indelungata de timp.",
+    "category": "Milk"
+  },
+  {
+    "title": "Lapte UHT Prodlacta integral 1 l",
+    "imageUrl": "https://www.auchan.ro/public/images/hd7/hca/h00/lapte-uht-prodlacta-integral-1-l-8944448733214.jpg",
+    "price": 5.00,
+    "description": "Lapte intergral standardizat, 3,5% grasime, omogenizat, ultrapasteurizat UHT.\n\nLaptele ultrapasteurizat are o consistenta fluida, aspectul unui lichid omogen, lipsit de impuritati vizibile si de sediment. Prezinta o culoare alba, cu nuanta usor galbuie, uniforma, gust si miros placut, dulceag, caracteristic laptelui, cu un usor gust de fiert, fara gust si miros strain.",
+    "category": "Milk"
+  },
+  {
+    "title": "Lapte de consum Zuzu 1.8L, 3.5% grasime",
+    "imageUrl": "https://www.auchan.ro/public/images/h2d/h16/h00/lapte-de-consum-zuzu-18l-35-grasime-8935115325470.jpg",
+    "price": 9.90,
+    "description": "Lapte de consum integral cu 3.5% grasime.",
+    "category": "Milk"
   }
-
 ]

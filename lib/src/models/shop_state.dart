@@ -4,7 +4,10 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:shop_chop/src/models/serializers.dart';
+import 'package:shop_chop/src/models/shop/product.dart';
+import 'package:shop_chop/src/models/shop/product_state.dart';
 import 'auth/auth_state.dart';
+
 
 part 'shop_state.g.dart';
 
@@ -16,6 +19,8 @@ abstract class ShopState implements Built<ShopState, ShopStateBuilder> {
   ShopState._();
 
   AuthState get auth;
+
+  ProductState get product;
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this);
 

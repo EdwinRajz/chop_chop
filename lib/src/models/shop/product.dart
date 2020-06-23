@@ -1,9 +1,15 @@
 library product;
+
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
+import 'package:meta/meta.dart';
 import 'package:built_value/serializer.dart';
+import 'package:shop_chop/src/models/serializers.dart';
+
+
 part 'product.g.dart';
-abstract class Product implements Built<Product, ProductBuilder>{
+
+abstract class Product implements Built<Product, ProductBuilder> {
   factory Product({
     @required String title,
     @required String image,
@@ -12,10 +18,10 @@ abstract class Product implements Built<Product, ProductBuilder>{
   }) {
     return _$Product((ProductBuilder b) {
       b
-        ..title = title,
-        ..image = image,
-        ..description = description,
-        ..price = price,
+        ..title = title
+        ..image = image
+        ..description = description
+        ..price = price;
     });
   }
 
@@ -23,21 +29,15 @@ abstract class Product implements Built<Product, ProductBuilder>{
 
   Product._();
 
-  String get id;
+  String get title;
 
-  String get uid;
-
+  String get image;
 
   String get description;
 
-  int get likes;
-
-  DateTime get createdAt;
-
-  BuiltList<String> get pictures;
-
+  double get price;
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this);
 
-  static Serializer<Product> get serializer => _$postSerializer;
+  static Serializer<Product> get serializer => _$productSerializer;
 }
