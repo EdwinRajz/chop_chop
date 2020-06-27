@@ -1,11 +1,9 @@
 import 'package:shop_chop/src/containers/user_container.dart';
 import 'package:shop_chop/src/models/auth/shop_user.dart';
-
-import 'login_page.dart';
 import 'package:flutter/material.dart';
+import 'login_page.dart';
 
 import 'main_page.dart';
-
 
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:http/http.dart';
 import 'package:redux/redux.dart';
+import 'package:shop_chop/src/actions/auth/logout.dart';
 import 'package:shop_chop/src/actions/shop/listen_for_products.dart';
 import 'package:shop_chop/src/containers/product_container.dart';
 import 'package:shop_chop/src/containers/registration_info_container.dart';
@@ -56,11 +56,18 @@ class _MainPageState extends State<MainPage> {
                       // todo:
                     },
                   ),
-                  const SizedBox(width: 10.0),
+                  const SizedBox(width: 3.0),
                   IconButton(
                     icon: Icon(Icons.shopping_cart),
                     onPressed: () {
                       Navigator.pushNamed(context, CartPage.id);
+                    },
+                  ),
+                  const SizedBox(width: 3.0),
+                  IconButton(
+                    icon: Icon(Icons.clear),
+                    onPressed: () {
+                      StoreProvider.of<ShopState>(context).dispatch(Logout());
                     },
                   ),
                 ],
@@ -71,7 +78,7 @@ class _MainPageState extends State<MainPage> {
                   child: Scaffold(
                     appBar: AppBar(
                       title: Text(
-                        'Choose a store,\n ${registrationInfo?.name}',
+                        'Choose a store,\n ${ShopUser}',
                         style: TextStyle(fontSize: 16.0),
                       ),
                     ),
@@ -119,7 +126,9 @@ class _MainPageState extends State<MainPage> {
                                       MaterialPageRoute<void>(
                                         fullscreenDialog: true,
                                         builder: (BuildContext context) {
-                                          return ProductPage(product: products[index],);
+                                          return ProductPage(
+                                            product: products[index],
+                                          );
                                         },
                                       ),
                                     );
