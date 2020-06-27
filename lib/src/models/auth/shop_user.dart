@@ -22,10 +22,7 @@ abstract class ShopUser implements Built<ShopUser, ShopUserBuilder> {
   String get phone;
 
   @nullable
-  String get verificationId;
-
-  @nullable
-  String get smsCode;
+  String get name;
 
   @nullable
   String get password;
@@ -35,7 +32,6 @@ abstract class ShopUser implements Built<ShopUser, ShopUserBuilder> {
 
   @nullable
   DateTime get birthDate;
-
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this);
 

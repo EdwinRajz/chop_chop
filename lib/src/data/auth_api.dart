@@ -62,10 +62,10 @@ class AuthApi {
         ..uid = firebaseUser.uid
         ..email = info.email
         ..birthDate = info.birthDate
-        ..phone = info.phone;
+        ..phone = info.phone
+        ..name = info.name;
     });
     await _firestore.document('users/${user.uid}').setData(user.json);
     return user;
   }
-
 }

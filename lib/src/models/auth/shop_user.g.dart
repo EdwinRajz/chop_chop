@@ -33,16 +33,10 @@ class _$ShopUserSerializer implements StructuredSerializer<ShopUser> {
         ..add(serializers.serialize(object.phone,
             specifiedType: const FullType(String)));
     }
-    if (object.verificationId != null) {
+    if (object.name != null) {
       result
-        ..add('verificationId')
-        ..add(serializers.serialize(object.verificationId,
-            specifiedType: const FullType(String)));
-    }
-    if (object.smsCode != null) {
-      result
-        ..add('smsCode')
-        ..add(serializers.serialize(object.smsCode,
+        ..add('name')
+        ..add(serializers.serialize(object.name,
             specifiedType: const FullType(String)));
     }
     if (object.password != null) {
@@ -89,12 +83,8 @@ class _$ShopUserSerializer implements StructuredSerializer<ShopUser> {
           result.phone = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'verificationId':
-          result.verificationId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'smsCode':
-          result.smsCode = serializers.deserialize(value,
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'password':
@@ -124,9 +114,7 @@ class _$ShopUser extends ShopUser {
   @override
   final String phone;
   @override
-  final String verificationId;
-  @override
-  final String smsCode;
+  final String name;
   @override
   final String password;
   @override
@@ -141,8 +129,7 @@ class _$ShopUser extends ShopUser {
       {this.uid,
       this.email,
       this.phone,
-      this.verificationId,
-      this.smsCode,
+      this.name,
       this.password,
       this.address,
       this.birthDate})
@@ -166,8 +153,7 @@ class _$ShopUser extends ShopUser {
         uid == other.uid &&
         email == other.email &&
         phone == other.phone &&
-        verificationId == other.verificationId &&
-        smsCode == other.smsCode &&
+        name == other.name &&
         password == other.password &&
         address == other.address &&
         birthDate == other.birthDate;
@@ -179,11 +165,9 @@ class _$ShopUser extends ShopUser {
         $jc(
             $jc(
                 $jc(
-                    $jc(
-                        $jc($jc($jc(0, uid.hashCode), email.hashCode),
-                            phone.hashCode),
-                        verificationId.hashCode),
-                    smsCode.hashCode),
+                    $jc($jc($jc(0, uid.hashCode), email.hashCode),
+                        phone.hashCode),
+                    name.hashCode),
                 password.hashCode),
             address.hashCode),
         birthDate.hashCode));
@@ -195,8 +179,7 @@ class _$ShopUser extends ShopUser {
           ..add('uid', uid)
           ..add('email', email)
           ..add('phone', phone)
-          ..add('verificationId', verificationId)
-          ..add('smsCode', smsCode)
+          ..add('name', name)
           ..add('password', password)
           ..add('address', address)
           ..add('birthDate', birthDate))
@@ -219,14 +202,9 @@ class ShopUserBuilder implements Builder<ShopUser, ShopUserBuilder> {
   String get phone => _$this._phone;
   set phone(String phone) => _$this._phone = phone;
 
-  String _verificationId;
-  String get verificationId => _$this._verificationId;
-  set verificationId(String verificationId) =>
-      _$this._verificationId = verificationId;
-
-  String _smsCode;
-  String get smsCode => _$this._smsCode;
-  set smsCode(String smsCode) => _$this._smsCode = smsCode;
+  String _name;
+  String get name => _$this._name;
+  set name(String name) => _$this._name = name;
 
   String _password;
   String get password => _$this._password;
@@ -247,8 +225,7 @@ class ShopUserBuilder implements Builder<ShopUser, ShopUserBuilder> {
       _uid = _$v.uid;
       _email = _$v.email;
       _phone = _$v.phone;
-      _verificationId = _$v.verificationId;
-      _smsCode = _$v.smsCode;
+      _name = _$v.name;
       _password = _$v.password;
       _address = _$v.address;
       _birthDate = _$v.birthDate;
@@ -277,8 +254,7 @@ class ShopUserBuilder implements Builder<ShopUser, ShopUserBuilder> {
             uid: uid,
             email: email,
             phone: phone,
-            verificationId: verificationId,
-            smsCode: smsCode,
+            name: name,
             password: password,
             address: address,
             birthDate: birthDate);
