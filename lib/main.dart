@@ -11,8 +11,10 @@ import 'package:shop_chop/src/data/product_api.dart';
 import 'package:shop_chop/src/epics/app_epics.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 import 'package:shop_chop/src/presentation/cart_page.dart';
+import 'package:shop_chop/src/presentation/home.dart';
 import 'package:shop_chop/src/presentation/login_page.dart';
 import 'package:shop_chop/src/presentation/main_page.dart';
+import 'package:shop_chop/src/presentation/product_page.dart';
 import 'package:shop_chop/src/presentation/registration_page.dart';
 import 'package:shop_chop/src/reducer/reducer.dart';
 
@@ -56,14 +58,15 @@ class InstagramClone extends StatelessWidget {
       store: store,
       child: MaterialApp(
         theme: ThemeData(
-          primaryColor: Colors.blue,
+          primaryColor: Colors.green,
         ),
-        home: LoginPage(),
+        home: Home(),
         routes: <String, WidgetBuilder>{
           MainPage.id: (BuildContext context) => MainPage(),
           LoginPage.id: (BuildContext context) => LoginPage(),
           RegistrationPage.id: (BuildContext context) => RegistrationPage(),
           CartPage.id: (BuildContext context) => CartPage(),
+          ProductPage.id: (BuildContext context) => ProductPage(),
         },
       ),
     );

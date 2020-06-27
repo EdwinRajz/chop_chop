@@ -11,10 +11,12 @@ import 'package:shop_chop/src/models/auth/registration_info.dart';
 import 'package:shop_chop/src/models/auth/shop_user.dart';
 import 'package:shop_chop/src/models/shop/product.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
+import 'package:shop_chop/src/presentation/product_page.dart';
 
 import 'cart_page.dart';
 
 class MainPage extends StatefulWidget {
+  const MainPage({Key key}) : super(key: key);
   static const String id = 'Main';
 
   @override
@@ -23,14 +25,13 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   Store<ShopState> store;
-  bool isLoading = true;
+  bool isLoading = false;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      store = StoreProvider.of<ShopState>(context)
-      ..dispatch(ListenForProducts());
+      store = StoreProvider.of<ShopState>(context)..dispatch(ListenForProducts());
     });
   }
 
@@ -94,70 +95,91 @@ class _MainPageState extends State<MainPage> {
 
               // todo: items will be displayed according to the selected shop
 
-              body: Column(
-                children: <Widget>[
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.7,
-                    child: GridView.builder(
-                      physics: const ScrollPhysics(),
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(3.0),
-                      itemCount: products.length,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-                      itemBuilder: (BuildContext context, int index) {
-                        final Product product = products[index];
-                        return GridTile(
-                          footer: Text('${products[index].title}'),
-                          child: Column(
-                            children: <Widget>[
-                              //Image.network(productNames[index]['title']),
-                              Image.network('${products[index].image}'),
-                            ],
+              body: Center(
+                child: isLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : Column(
+                        children: <Widget>[
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.7,
+                            child: GridView.builder(
+                              physics: const ScrollPhysics(),
+                              shrinkWrap: true,
+                              padding: const EdgeInsets.all(3.0),
+                              itemCount: products.length,
+                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+                              itemBuilder: (BuildContext context, int index) {
+                                const double footerHeight = 32.0;
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute<void>(
+                                        fullscreenDialog: true,
+                                        builder: (BuildContext context) {
+                                          return ProductPage(product: products[index],);
+                                        },
+                                      ),
+                                    );
+                                  },
+                                  child: GridTile(
+                                    header: Container(
+                                      width: 16,
+                                      height: 24,
+                                      margin: const EdgeInsets.only(left: 10, right: 60, top: 10),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white70,
+                                        borderRadius: BorderRadius.circular(14.0),
+                                      ),
+                                      padding: EdgeInsets.all(6.0),
+                                      child: Text(
+                                        '${products[index].price} RON',
+                                        style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    footer: Container(
+                                      height: footerHeight,
+                                      child: Text(
+                                        '${products[index].title}',
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                    child: Container(
+                                      padding: const EdgeInsetsDirectional.only(bottom: footerHeight),
+                                      child: Image.network('${products[index].image}'),
+                                    ),
+                                  ),
+                                );
+                                // todo: double tap enlarges image and shows details
+                                // todo: a popup screen will be displayed and user will be able to enter quantity or pieces if required
+                              },
+                            ),
                           ),
-                        );
-
-                        // todo: double tap enlarges image and shows details
-                        // todo: a popup screen will be displayed and user will be able to enter quantity or pieces if required
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: Row(
-                      // todo: favourite items will be displayed here
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Container(
-                          height: 70,
-                          width: 70,
-                          color: Colors.grey,
-                          margin: EdgeInsets.all(6.0),
-                          child: Text('Favourite Item 1'),
-                        ),
-                        Container(
-                          height: 70,
-                          width: 70,
-                          color: Colors.grey,
-                          margin: EdgeInsets.all(6.0),
-                          child: Text('Favourite Item 2'),
-                        ),
-                        Container(
-                          height: 70,
-                          width: 70,
-                          color: Colors.grey,
-                          margin: EdgeInsets.all(6.0),
-                          child: Text('Favourite Item 3'),
-                        ),
-                        Container(
-                          height: 70,
-                          width: 70,
-                          color: Colors.grey,
-                          margin: EdgeInsets.all(6.0),
-                          child: Text('Favourite tem 4'),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                          Expanded(
+                            child: Row(
+                              // todo: favourite items will be displayed here
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Image.network('${products[1].image}'),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Image.network('${products[2].image}'),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Image.network('${products[3].image}'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
               ),
             );
           },

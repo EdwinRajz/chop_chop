@@ -1,10 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:shop_chop/src/actions/auth/login.dart';
+import 'package:shop_chop/src/models/shop_state.dart';
 import 'package:shop_chop/src/presentation/registration_page.dart';
 
 import 'main_page.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key key}) : super(key: key);
   static const String id = 'Login';
 
   @override
@@ -20,7 +24,6 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
-        //todo: firebase authentication to be implemented
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
@@ -68,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                 return null;
               }
             },
-            onChanged: (String value) {},
+            controller: email,
           ),
           const SizedBox(
             height: 32.0,
@@ -87,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
               labelText: 'password',
               labelStyle: TextStyle(fontWeight: FontWeight.bold),
             ),
-            onChanged: (String value) {},
+            controller: password,
           ),
           const SizedBox(height: 32.0),
           Container(
@@ -97,9 +100,16 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.circular(25.0),
               ),
               color: Colors.green,
-              onPressed: () {
-                Navigator.pushNamed(context, MainPage.id);
+              onPressed: () async {
+                final String email = this.email.text;
+                final String password = this.password.text;
+
+                if (email.isNotEmpty && password.isNotEmpty) {
+                  StoreProvider.of<ShopState>(context).dispatch(Login(email, password));
+                }
               },
+
+
               child: const Text('Sign in'),
             ),
           ),
