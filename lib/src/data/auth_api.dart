@@ -1,20 +1,27 @@
 import 'dart:async';
+import 'package:algolia/algolia.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shop_chop/src/models/auth/registration_info.dart';
 import 'package:shop_chop/src/models/auth/shop_user.dart';
+import 'package:shop_chop/src/models/shop/product.dart';
 
 class AuthApi {
   const AuthApi({
     @required FirebaseAuth auth,
     @required Firestore firestore,
+    @required AlgoliaIndexReference index,
   })  : assert(auth != null),
         assert(firestore != null),
+        assert(index != null),
         _auth = auth,
+        _index = index,
         _firestore = firestore;
 
+  final AlgoliaIndexReference _index;
   final FirebaseAuth _auth;
   final Firestore _firestore;
 
@@ -67,5 +74,18 @@ class AuthApi {
     });
     await _firestore.document('users/${user.uid}').setData(user.json);
     return user;
+  }
+
+  Future<List<Product>> searchProducts({@required String query}) async {
+    final AlgoliaQuerySnapshot result = await _index //
+        .search(query)
+        .getObjects();
+    if (result.empty) {
+      return <Product>[];
+    } else {
+      return result.hits //
+          .map((AlgoliaObjectSnapshot object) => Product.fromJson(object.data))
+          .toList();
+    }
   }
 }

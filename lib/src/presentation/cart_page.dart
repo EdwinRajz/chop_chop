@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shop_chop/src/layouts/shop_list.dart';
+import 'package:shop_chop/src/models/shop/product.dart';
 
 
 class CartPage extends StatelessWidget {
+  const CartPage({Key key, @required this.product}) : super(key: key);
+  final Product product;
   static const String id = 'Cart';
 
   @override

@@ -1,6 +1,7 @@
 import 'package:shop_chop/src/actions/actions.dart';
 import 'package:shop_chop/src/actions/auth/logout.dart';
 import 'package:shop_chop/src/actions/auth/update_registration_info.dart';
+import 'package:shop_chop/src/actions/shop/search_for_products.dart';
 import 'package:shop_chop/src/models/auth/auth_state.dart';
 
 import 'package:redux/redux.dart';
@@ -9,6 +10,7 @@ Reducer<AuthState> authReducer = combineReducers<AuthState>(<Reducer<AuthState>>
   TypedReducer<AuthState, UserAction>(_userAction),
   TypedReducer<AuthState, UpdateRegistrationInfo>(_updateRegistrationInfo),
   TypedReducer<AuthState, LogoutSuccessful>(_logoutSuccessful),
+  TypedReducer<AuthState, SearchForProductsSuccessful>(_searchForProductsSuccessful),
 ]);
 
 AuthState _userAction(AuthState state, UserAction action) {
@@ -21,4 +23,10 @@ AuthState _updateRegistrationInfo(AuthState state, UpdateRegistrationInfo action
 
 AuthState _logoutSuccessful(AuthState state, LogoutSuccessful action) {
   return AuthState();
+}
+
+AuthState _searchForProductsSuccessful(AuthState state, SearchForProductsSuccessful action) {
+  return state.rebuild((AuthStateBuilder b) {
+    b.searchResult = action.products.toBuilder();
+  });
 }

@@ -15,6 +15,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ShopUser.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Product)]),
+          () => new ListBuilder<Product>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Product)]),
           () => new ListBuilder<Product>()))
     .build();
 

@@ -17,7 +17,12 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
   @override
   Iterable<Object> serialize(Serializers serializers, AuthState object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object>[
+      'searchResult',
+      serializers.serialize(object.searchResult,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Product)])),
+    ];
     if (object.user != null) {
       result
         ..add('user')
@@ -53,6 +58,12 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
                   specifiedType: const FullType(RegistrationInfo))
               as RegistrationInfo);
           break;
+        case 'searchResult':
+          result.searchResult.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Product)]))
+              as BuiltList<Object>);
+          break;
       }
     }
 
@@ -65,11 +76,17 @@ class _$AuthState extends AuthState {
   final ShopUser user;
   @override
   final RegistrationInfo info;
+  @override
+  final BuiltList<Product> searchResult;
 
   factory _$AuthState([void Function(AuthStateBuilder) updates]) =>
       (new AuthStateBuilder()..update(updates)).build();
 
-  _$AuthState._({this.user, this.info}) : super._();
+  _$AuthState._({this.user, this.info, this.searchResult}) : super._() {
+    if (searchResult == null) {
+      throw new BuiltValueNullFieldError('AuthState', 'searchResult');
+    }
+  }
 
   @override
   AuthState rebuild(void Function(AuthStateBuilder) updates) =>
@@ -81,19 +98,24 @@ class _$AuthState extends AuthState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AuthState && user == other.user && info == other.info;
+    return other is AuthState &&
+        user == other.user &&
+        info == other.info &&
+        searchResult == other.searchResult;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, user.hashCode), info.hashCode));
+    return $jf(
+        $jc($jc($jc(0, user.hashCode), info.hashCode), searchResult.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AuthState')
           ..add('user', user)
-          ..add('info', info))
+          ..add('info', info)
+          ..add('searchResult', searchResult))
         .toString();
   }
 }
@@ -110,12 +132,19 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
       _$this._info ??= new RegistrationInfoBuilder();
   set info(RegistrationInfoBuilder info) => _$this._info = info;
 
+  ListBuilder<Product> _searchResult;
+  ListBuilder<Product> get searchResult =>
+      _$this._searchResult ??= new ListBuilder<Product>();
+  set searchResult(ListBuilder<Product> searchResult) =>
+      _$this._searchResult = searchResult;
+
   AuthStateBuilder();
 
   AuthStateBuilder get _$this {
     if (_$v != null) {
       _user = _$v.user?.toBuilder();
       _info = _$v.info?.toBuilder();
+      _searchResult = _$v.searchResult?.toBuilder();
       _$v = null;
     }
     return this;
@@ -138,8 +167,11 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
   _$AuthState build() {
     _$AuthState _$result;
     try {
-      _$result =
-          _$v ?? new _$AuthState._(user: _user?.build(), info: _info?.build());
+      _$result = _$v ??
+          new _$AuthState._(
+              user: _user?.build(),
+              info: _info?.build(),
+              searchResult: searchResult.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -147,6 +179,8 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
         _user?.build();
         _$failedField = 'info';
         _info?.build();
+        _$failedField = 'searchResult';
+        searchResult.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AuthState', _$failedField, e.toString());

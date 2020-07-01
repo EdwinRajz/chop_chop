@@ -1,3 +1,4 @@
+import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -16,14 +17,17 @@ import 'package:shop_chop/src/presentation/login_page.dart';
 import 'package:shop_chop/src/presentation/main_page.dart';
 import 'package:shop_chop/src/presentation/product_page.dart';
 import 'package:shop_chop/src/presentation/registration_page.dart';
+import 'package:shop_chop/src/presentation/search_page.dart';
 import 'package:shop_chop/src/reducer/reducer.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //FirebaseAuth.instance.signOut();
   final AuthApi authApi = AuthApi(
     auth: FirebaseAuth.instance,
     firestore: Firestore.instance,
+    index:
+        const Algolia.init(applicationId: 'QBA7WQDNJ8', apiKey: 'a80adfd77bad4b1d0b77c7217e29cb57').index('products'),
   );
 
   final ProductApi productApi = ProductApi(
@@ -67,6 +71,7 @@ class InstagramClone extends StatelessWidget {
           RegistrationPage.id: (BuildContext context) => RegistrationPage(),
           CartPage.id: (BuildContext context) => CartPage(),
           ProductPage.id: (BuildContext context) => ProductPage(),
+          SearchPage.id: (BuildContext context) => SearchPage(),
         },
       ),
     );

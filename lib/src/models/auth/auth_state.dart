@@ -6,6 +6,7 @@ import 'package:built_value/serializer.dart';
 import 'package:shop_chop/src/models/auth/registration_info.dart';
 import 'package:shop_chop/src/models/auth/shop_user.dart';
 import 'package:shop_chop/src/models/serializers.dart';
+import 'package:shop_chop/src/models/shop/product.dart';
 
 part 'auth_state.g.dart';
 
@@ -21,6 +22,8 @@ abstract class AuthState implements Built<AuthState, AuthStateBuilder> {
 
   @nullable
   RegistrationInfo get info;
+
+  BuiltList<Product> get searchResult;
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this);
 
