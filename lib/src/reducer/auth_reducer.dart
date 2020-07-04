@@ -1,6 +1,7 @@
 import 'package:shop_chop/src/actions/actions.dart';
 import 'package:shop_chop/src/actions/auth/logout.dart';
 import 'package:shop_chop/src/actions/auth/update_registration_info.dart';
+import 'package:shop_chop/src/actions/shop/add_to_cart.dart';
 import 'package:shop_chop/src/actions/shop/search_for_products.dart';
 import 'package:shop_chop/src/models/auth/auth_state.dart';
 
@@ -11,6 +12,7 @@ Reducer<AuthState> authReducer = combineReducers<AuthState>(<Reducer<AuthState>>
   TypedReducer<AuthState, UpdateRegistrationInfo>(_updateRegistrationInfo),
   TypedReducer<AuthState, LogoutSuccessful>(_logoutSuccessful),
   TypedReducer<AuthState, SearchForProductsSuccessful>(_searchForProductsSuccessful),
+  TypedReducer<AuthState, AddToCart>(_addToCart),
 ]);
 
 AuthState _userAction(AuthState state, UserAction action) {
@@ -28,5 +30,11 @@ AuthState _logoutSuccessful(AuthState state, LogoutSuccessful action) {
 AuthState _searchForProductsSuccessful(AuthState state, SearchForProductsSuccessful action) {
   return state.rebuild((AuthStateBuilder b) {
     b.searchResult = action.products.toBuilder();
+  });
+}
+
+AuthState _addToCart(AuthState state, AddToCart action) {
+  return state.rebuild((AuthStateBuilder b) {
+    b.addedProducts.add(action.product);
   });
 }

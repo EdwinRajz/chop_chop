@@ -23,4 +23,5 @@ class ProductApi {
             .map((DocumentSnapshot document) => Product.fromJson(document.data))
             .toList());
   }
+
 }

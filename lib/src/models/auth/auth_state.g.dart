@@ -22,6 +22,10 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
       serializers.serialize(object.searchResult,
           specifiedType:
               const FullType(BuiltList, const [const FullType(Product)])),
+      'addedProducts',
+      serializers.serialize(object.addedProducts,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Product)])),
     ];
     if (object.user != null) {
       result
@@ -64,6 +68,12 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
                       BuiltList, const [const FullType(Product)]))
               as BuiltList<Object>);
           break;
+        case 'addedProducts':
+          result.addedProducts.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Product)]))
+              as BuiltList<Object>);
+          break;
       }
     }
 
@@ -78,13 +88,19 @@ class _$AuthState extends AuthState {
   final RegistrationInfo info;
   @override
   final BuiltList<Product> searchResult;
+  @override
+  final BuiltList<Product> addedProducts;
 
   factory _$AuthState([void Function(AuthStateBuilder) updates]) =>
       (new AuthStateBuilder()..update(updates)).build();
 
-  _$AuthState._({this.user, this.info, this.searchResult}) : super._() {
+  _$AuthState._({this.user, this.info, this.searchResult, this.addedProducts})
+      : super._() {
     if (searchResult == null) {
       throw new BuiltValueNullFieldError('AuthState', 'searchResult');
+    }
+    if (addedProducts == null) {
+      throw new BuiltValueNullFieldError('AuthState', 'addedProducts');
     }
   }
 
@@ -101,13 +117,15 @@ class _$AuthState extends AuthState {
     return other is AuthState &&
         user == other.user &&
         info == other.info &&
-        searchResult == other.searchResult;
+        searchResult == other.searchResult &&
+        addedProducts == other.addedProducts;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, user.hashCode), info.hashCode), searchResult.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, user.hashCode), info.hashCode), searchResult.hashCode),
+        addedProducts.hashCode));
   }
 
   @override
@@ -115,7 +133,8 @@ class _$AuthState extends AuthState {
     return (newBuiltValueToStringHelper('AuthState')
           ..add('user', user)
           ..add('info', info)
-          ..add('searchResult', searchResult))
+          ..add('searchResult', searchResult)
+          ..add('addedProducts', addedProducts))
         .toString();
   }
 }
@@ -138,6 +157,12 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
   set searchResult(ListBuilder<Product> searchResult) =>
       _$this._searchResult = searchResult;
 
+  ListBuilder<Product> _addedProducts;
+  ListBuilder<Product> get addedProducts =>
+      _$this._addedProducts ??= new ListBuilder<Product>();
+  set addedProducts(ListBuilder<Product> addedProducts) =>
+      _$this._addedProducts = addedProducts;
+
   AuthStateBuilder();
 
   AuthStateBuilder get _$this {
@@ -145,6 +170,7 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
       _user = _$v.user?.toBuilder();
       _info = _$v.info?.toBuilder();
       _searchResult = _$v.searchResult?.toBuilder();
+      _addedProducts = _$v.addedProducts?.toBuilder();
       _$v = null;
     }
     return this;
@@ -171,7 +197,8 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
           new _$AuthState._(
               user: _user?.build(),
               info: _info?.build(),
-              searchResult: searchResult.build());
+              searchResult: searchResult.build(),
+              addedProducts: addedProducts.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -181,6 +208,8 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
         _info?.build();
         _$failedField = 'searchResult';
         searchResult.build();
+        _$failedField = 'addedProducts';
+        addedProducts.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AuthState', _$failedField, e.toString());

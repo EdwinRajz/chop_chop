@@ -15,13 +15,15 @@ abstract class AddToCart //
 {
   factory AddToCart(Product product) {
     return _$AddToCart((AddToCartBuilder b) {
-      b..product = product;
+      b.product = product.toBuilder();
     });
   }
 
   AddToCart._();
 
   Product get product;
+
+
 }
 
 abstract class AddToCartSuccessful //

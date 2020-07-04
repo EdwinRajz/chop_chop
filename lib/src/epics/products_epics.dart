@@ -1,3 +1,4 @@
+import 'package:shop_chop/src/actions/shop/add_to_cart.dart';
 import 'package:shop_chop/src/actions/shop/listen_for_products.dart';
 import 'package:shop_chop/src/data/product_api.dart';
 import 'package:redux_epics/redux_epics.dart';
