@@ -9,8 +9,16 @@ class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Image.network('${product.image}'),
+      appBar: AppBar(
+        title: Text('${product.title}'),
+      ),
+      body: Column(
+        children: <Widget>[
+          Image.network('${product.image}'),
+          Container(
+            child: Text('${product.description}'),
+          ),
+        ],
       ),
     );
   }

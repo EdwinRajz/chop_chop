@@ -8,6 +8,7 @@ part of serializers;
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AuthState.serializer)
+      ..add(Discount.serializer)
       ..add(Product.serializer)
       ..add(ProductState.serializer)
       ..add(RegistrationInfo.serializer)
@@ -16,6 +17,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Product)]),
           () => new ListBuilder<Product>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Discount)]),
+          () => new ListBuilder<Discount>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Product)]),
           () => new ListBuilder<Product>())

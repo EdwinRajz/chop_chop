@@ -187,5 +187,50 @@
     "price": 9.90,
     "description": "Lapte de consum integral cu 3.5% grasime.",
     "category": "Milk"
+  },
+  {
+    "title": "Espressor automat Krups Dolce Gusto Infinissima KP170531 cu presiune de 15 bari",
+    "imageUrl": "https://www.auchan.ro/public/images/h53/h82/h00/espressor-automat-krups-dolce-gusto-infinissima-kp170531-cu-presiune-de-15-bari-8896534544414.png",
+    "price": 269.00,
+    "description": "Bucura-te de o multitudine de bauturi pe baza de cafea cu ajutorul espressorului manual cu capsule NESCAFE Dolce Gusto Infinissima de la Krups",
+    "category": "Hardware"
+  },
+  {
+    "title": "Espressor Bosch Tassimo Vivy TAS1407 Crem cu puterea de 1300W",
+    "imageUrl": "https://www.auchan.ro/public/images/h0c/h8d/h00/espressor-bosch-tassimo-vivy-tas1407-crem-cu-puterea-de-1300w-8819512836126.jpg",
+    "price": 219.00,
+    "description": "Espressor Bosch ce ofera un gust extraordinar si prezinta o gama variata de bauturi.",
+    "category": "Hardware"
+
+  },
+
+  {
+    "title": "Espressor Bosch Tassimo Vivy TAS1403 cu puterea de 1300W, rosu",
+    "imageUrl": "https://www.auchan.ro/public/images/haf/h8c/h00/espressor-bosch-tassimo-vivy-tas1407-rosu-cu-puterea-de-1300w-8819518079006.jpg",
+    "price": 219.00,
+    "description": "Espressor Bosch ce ofera un gust extraordinar si prezinta o gama variata de bauturi.",
+    "category": "Hardware"
+
+  },
+  {
+    "title": "Espressor Bosch Tassimo Vivy TAS1402 cu puterea de 1300W, negru",
+    "imageUrl": "https://www.auchan.ro/public/images/hcb/h3c/h00/espressor-bosch-tassimo-vivy-tas1407-negru-cu-puterea-de-1300w-8819522797598.jpg",
+    "price": 219.00,
+    "description": "Espressor Bosch ce ofera un gust extraordinar si prezinta o gama variata de bauturi.",
+    "category": "Hardware"
+  },
+  {
+    "title": "Espressor automat cu capsule Krups Dolce Gusto Mini Me Piano Black",
+    "imageUrl": "https://www.auchan.ro/public/images/hcb/h3c/h00/https://www.auchan.ro/public/images/he7/h15/h00/espressor-automat-cu-capsule-krups-dolce-gusto-mini-me-negru-8819526303774.jpg",
+    "price": 349.00,
+    "description": "N-a fost niciodata mai usor sa prepari o cafea excelenta in confortul caminului tau.Secretul este aparatul de cafea Nescafe Dolce Gusto Mini Me. Avand un design compact si o pompa ce creeaza opresiune de 15 bari, acest aparat inteligent iti va pregati de fiecare data o bautura desavarsita, foarte aromata, exact ca cea preparata la o cafenea.",
+    "category": "Hardware"
+  },
+  {
+    "title": "Espressor automat cu capsule Krups Dolce Gusto Mini Me rosu",
+    "imageUrl": "https://www.auchan.ro/public/images/h61/h9d/h00/espressor-automat-cu-capsule-krups-dolce-gusto-mini-me-rosu-8819521159198.jpg",
+    "price": 349.00,
+    "description": "N-a fost niciodata mai usor sa prepari o cafea excelenta in confortul caminului tau.Secretul este aparatul de cafea Nescafe Dolce Gusto Mini Me. Avand un design compact si o pompa ce creeaza opresiune de 15 bari, acest aparat inteligent iti va pregati de fiecare data o bautura desavarsita, foarte aromata, exact ca cea preparata la o cafenea.",
+    "category": "Hardware"
   }
 ]

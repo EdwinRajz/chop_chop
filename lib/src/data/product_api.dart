@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path/path.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:shop_chop/src/models/shop/discount.dart';
 import 'package:shop_chop/src/models/shop/product.dart';
 
 class ProductApi {
@@ -24,4 +25,12 @@ class ProductApi {
             .toList());
   }
 
+  Stream<List<Discount>> getDiscountProducts() {
+    return _firestore //
+        .collection('discounts')
+        .snapshots()
+        .map((QuerySnapshot snapshot) => snapshot.documents //
+            .map((DocumentSnapshot document) => Discount.fromJson(document.data))
+            .toList()); // )
+  }
 }

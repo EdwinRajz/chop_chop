@@ -2,6 +2,7 @@ import 'package:shop_chop/src/actions/actions.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 import 'package:shop_chop/src/reducer/product_reducer.dart';
 
+
 import 'auth_reducer.dart';
 
 ShopState reducer(ShopState state, dynamic action) {
@@ -18,5 +19,6 @@ ShopState reducer(ShopState state, dynamic action) {
     b
       ..auth = authReducer(state.auth, action).toBuilder()
       ..product = productReducer(state.product, action).toBuilder();
+
   });
 }

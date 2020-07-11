@@ -37,6 +37,8 @@ abstract class Product implements Built<Product, ProductBuilder> {
 
   double get price;
 
+  String get id;
+
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this);
 
   static Serializer<Product> get serializer => _$productSerializer;

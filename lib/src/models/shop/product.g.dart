@@ -30,6 +30,8 @@ class _$ProductSerializer implements StructuredSerializer<Product> {
       'price',
       serializers.serialize(object.price,
           specifiedType: const FullType(double)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -62,6 +64,10 @@ class _$ProductSerializer implements StructuredSerializer<Product> {
           result.price = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double;
           break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -78,11 +84,13 @@ class _$Product extends Product {
   final String description;
   @override
   final double price;
+  @override
+  final String id;
 
   factory _$Product([void Function(ProductBuilder) updates]) =>
       (new ProductBuilder()..update(updates)).build();
 
-  _$Product._({this.title, this.image, this.description, this.price})
+  _$Product._({this.title, this.image, this.description, this.price, this.id})
       : super._() {
     if (title == null) {
       throw new BuiltValueNullFieldError('Product', 'title');
@@ -95,6 +103,9 @@ class _$Product extends Product {
     }
     if (price == null) {
       throw new BuiltValueNullFieldError('Product', 'price');
+    }
+    if (id == null) {
+      throw new BuiltValueNullFieldError('Product', 'id');
     }
   }
 
@@ -112,14 +123,18 @@ class _$Product extends Product {
         title == other.title &&
         image == other.image &&
         description == other.description &&
-        price == other.price;
+        price == other.price &&
+        id == other.id;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, title.hashCode), image.hashCode), description.hashCode),
-        price.hashCode));
+        $jc(
+            $jc($jc($jc(0, title.hashCode), image.hashCode),
+                description.hashCode),
+            price.hashCode),
+        id.hashCode));
   }
 
   @override
@@ -128,7 +143,8 @@ class _$Product extends Product {
           ..add('title', title)
           ..add('image', image)
           ..add('description', description)
-          ..add('price', price))
+          ..add('price', price)
+          ..add('id', id))
         .toString();
   }
 }
@@ -152,6 +168,10 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
   double get price => _$this._price;
   set price(double price) => _$this._price = price;
 
+  String _id;
+  String get id => _$this._id;
+  set id(String id) => _$this._id = id;
+
   ProductBuilder();
 
   ProductBuilder get _$this {
@@ -160,6 +180,7 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
       _image = _$v.image;
       _description = _$v.description;
       _price = _$v.price;
+      _id = _$v.id;
       _$v = null;
     }
     return this;
@@ -182,7 +203,11 @@ class ProductBuilder implements Builder<Product, ProductBuilder> {
   _$Product build() {
     final _$result = _$v ??
         new _$Product._(
-            title: title, image: image, description: description, price: price);
+            title: title,
+            image: image,
+            description: description,
+            price: price,
+            id: id);
     replace(_$result);
     return _$result;
   }

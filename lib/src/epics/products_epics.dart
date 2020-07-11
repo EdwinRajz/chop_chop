@@ -1,10 +1,11 @@
-import 'package:shop_chop/src/actions/shop/add_to_cart.dart';
+import 'package:shop_chop/src/actions/shop/listen_for_discounts.dart';
 import 'package:shop_chop/src/actions/shop/listen_for_products.dart';
 import 'package:shop_chop/src/data/product_api.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:meta/meta.dart';
 import 'package:shop_chop/src/actions/actions.dart';
+import 'package:shop_chop/src/models/shop/discount.dart';
 import 'package:shop_chop/src/models/shop/product.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 
@@ -19,6 +20,7 @@ class ProductEpics {
   Epic<ShopState> get epics {
     return combineEpics(<Epic<ShopState>>[
       TypedEpic<ShopState, ListenForProducts>(_listenForProducts),
+      TypedEpic<ShopState, ListenForDiscounts>(_listenForDiscounts),
     ]);
   }
 
@@ -28,5 +30,13 @@ class ProductEpics {
             .listen()
             .map<AppAction>((List<Product> products) => OnProductsEvent(products))
             .onErrorReturnWith((dynamic error) => ListenForProductsError(error)));
+  }
+
+  Stream<AppAction> _listenForDiscounts(Stream<ListenForDiscounts> actions, EpicStore<ShopState> store) {
+    return actions //
+        .flatMap((ListenForDiscounts action) => _productApi //
+            .getDiscountProducts()
+            .map<AppAction>((List<Discount> discounts) => OnDiscountsEvent(discounts))
+            .onErrorReturnWith((dynamic error) => ListenForProductsError(error))); //
   }
 }
