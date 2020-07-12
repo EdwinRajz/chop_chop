@@ -36,15 +36,14 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   Store<ShopState> store;
-  bool isLoading = false;
-  Badge badge = Badge();
-  CarouselSlider carouselSlider;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      store = StoreProvider.of<ShopState>(context)..dispatch(ListenForProducts())..dispatch(ListenForDiscounts());
+      store = StoreProvider.of<ShopState>(context)
+        ..dispatch(ListenForProducts()) //
+        ..dispatch(ListenForDiscounts());
     });
   }
 
@@ -54,7 +53,6 @@ class _MainPageState extends State<MainPage> {
       builder: (BuildContext context, ShopUser user) {
         return DiscountedProductsContainer(
           builder: (BuildContext context, List<Discount> discounts) {
-
             return AddedProductsContainer(
               builder: (BuildContext context, List<Product> addedProducts) {
                 return ProductsContainer(
@@ -120,139 +118,133 @@ class _MainPageState extends State<MainPage> {
                         ),
                       ),
                       body: Center(
-                        child: isLoading
-                            ? const Center(
-                                child: CircularProgressIndicator(),
-                              )
-                            : ListView(
-                                children: <Widget>[
-                                  Container(
-                                    height: MediaQuery.of(context).size.height * 0.7,
-                                    child: GridView.builder(
-                                      physics: const ScrollPhysics(),
-                                      shrinkWrap: true,
-                                      padding: const EdgeInsets.all(3.0),
-                                      itemCount: products.length,
-                                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-                                      itemBuilder: (BuildContext context, int index) {
-                                        final displayedProducts =
-                                        products.removeWhere((Product element) => element.id == discounts[index].productId);
-                                        const double footerHeight = 32.0;
-                                        return InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute<void>(
-                                                fullscreenDialog: true,
-                                                builder: (BuildContext context) {
-                                                  return ProductPage(
-                                                    product: products[index],
-                                                  );
-                                                },
-                                              ),
+                        child: ListView(
+                          children: <Widget>[
+                            Container(
+                              height: MediaQuery.of(context).size.height * 0.7,
+                              child: GridView.builder(
+                                physics: const ScrollPhysics(),
+                                shrinkWrap: true,
+                                padding: const EdgeInsets.all(3.0),
+                                itemCount: products.length,
+                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+                                itemBuilder: (BuildContext context, int index) {
+                                  const double footerHeight = 32.0;
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute<void>(
+                                          fullscreenDialog: true,
+                                          builder: (BuildContext context) {
+                                            return ProductPage(
+                                              product: products[index],
                                             );
                                           },
-                                          child: GridTile(
-                                            header: Container(
-                                              width: 16,
-                                              height: 24,
-                                              margin: const EdgeInsets.only(left: 10, right: 60, top: 10),
-                                              decoration: BoxDecoration(
-                                                color: Colors.white70,
-                                                borderRadius: BorderRadius.circular(14.0),
-                                              ),
-                                              padding: EdgeInsets.all(6.0),
-                                              child: Text(
-                                                '${products[index].price.toStringAsFixed(2)} RON',
-                                                style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
-                                              ),
-                                            ),
-                                            footer: Container(
-                                              height: footerHeight,
-                                              child: Text(
-                                                '${products[index].title}',
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ),
-                                            child: Container(
-                                              padding: const EdgeInsetsDirectional.only(bottom: footerHeight),
-                                              child: Stack(
-                                                children: <Widget>[
-                                                  Container(
-                                                    child: Image.network('${products[index].image}'),
-                                                  ),
-                                                  Align(
-                                                    alignment: Alignment.bottomRight,
-                                                    child: SizedBox(
-                                                      height: MediaQuery.of(context).size.width * 0.1,
-                                                      width: MediaQuery.of(context).size.width * 0.1,
-                                                      child: FloatingActionButton(
-                                                        heroTag: null,
-                                                        backgroundColor: Colors.green[200],
-                                                        child: Icon(Icons.add),
-                                                        onPressed: () {
-                                                          StoreProvider.of<ShopState>(context).dispatch(
-                                                            AddToCart(products[index]),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                  const Divider(
-                                    indent: 20.0,
-                                    endIndent: 20.0,
-                                    color: Colors.green,
-                                    thickness: 2.0,
-                                  ),
-                                  CarouselSlider(
-                                    options: CarouselOptions(
-                                      height: 100,
-                                      autoPlay: true,
-                                      autoPlayInterval: Duration(seconds: 3),
-                                      autoPlayAnimationDuration: Duration(milliseconds: 2400),
-                                      autoPlayCurve: Curves.fastLinearToSlowEaseIn,
-                                      scrollDirection: Axis.horizontal,
-                                    ),
-                                    items: discounts.map((Discount discount) {
-                                      final discountedProduct =
-                                          products.firstWhere((Product element) => element.id == discount.productId);
-                                      final double discountedPrice = discountedProduct.price * discount.discount;
-                                      return Builder(
-                                        builder: (BuildContext context) {
-                                          return Stack(
-                                            children: <Widget>[
-                                              Image.network(
-                                                '${discountedProduct.image}',
-                                              ),
-                                              Image.asset(
-                                                'assets/discount.png',
-                                                width: 80.0,
-                                                height: 60.0,
-                                              ),
-                                              Text(
-                                                '${discountedPrice.toStringAsFixed(2)} RON',
-                                                style: TextStyle(
-                                                    fontSize: 12.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    backgroundColor: Colors.amber),
-                                              ),
-                                            ],
-                                          );
-                                        },
+                                        ),
                                       );
-                                    }).toList(),
-                                  )
-                                ],
+                                    },
+                                    child: GridTile(
+                                      header: Container(
+                                        width: 16,
+                                        height: 24,
+                                        margin: const EdgeInsets.only(left: 10, right: 60, top: 10),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white70,
+                                          borderRadius: BorderRadius.circular(14.0),
+                                        ),
+                                        padding: EdgeInsets.all(6.0),
+                                        child: Text(
+                                          '${products[index].price.toStringAsFixed(2)} RON',
+                                          style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      footer: Container(
+                                        height: footerHeight,
+                                        child: Text(
+                                          '${products[index].title}',
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      child: Container(
+                                        padding: const EdgeInsetsDirectional.only(bottom: footerHeight),
+                                        child: Stack(
+                                          children: <Widget>[
+                                            Container(
+                                              child: Image.network('${products[index].image}'),
+                                            ),
+                                            Align(
+                                              alignment: Alignment.bottomRight,
+                                              child: SizedBox(
+                                                height: MediaQuery.of(context).size.width * 0.1,
+                                                width: MediaQuery.of(context).size.width * 0.1,
+                                                child: FloatingActionButton(
+                                                  heroTag: null,
+                                                  backgroundColor: Colors.green[200],
+                                                  child: Icon(Icons.add),
+                                                  onPressed: () {
+                                                    StoreProvider.of<ShopState>(context).dispatch(
+                                                      AddToCart(products[index]),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
                               ),
+                            ),
+                            const Divider(
+                              indent: 20.0,
+                              endIndent: 20.0,
+                              color: Colors.green,
+                              thickness: 2.0,
+                            ),
+                            CarouselSlider(
+                              options: CarouselOptions(
+                                height: 100,
+                                autoPlay: true,
+                                autoPlayInterval: Duration(seconds: 3),
+                                autoPlayAnimationDuration: Duration(milliseconds: 2400),
+                                autoPlayCurve: Curves.fastLinearToSlowEaseIn,
+                                scrollDirection: Axis.horizontal,
+                              ),
+                              items: discounts.map((Discount discount) {
+                                final discountedProduct =
+                                    products.firstWhere((Product element) => element.id == discount.productId);
+                                final double discountedPrice = discountedProduct.price * discount.discount;
+                                return Builder(
+                                  builder: (BuildContext context) {
+                                    return Stack(
+                                      children: <Widget>[
+                                        Image.network(
+                                          '${discountedProduct.image}',
+                                        ),
+                                        Image.asset(
+                                          'assets/discount.png',
+                                          width: 80.0,
+                                          height: 60.0,
+                                        ),
+                                        Text(
+                                          '${discountedPrice.toStringAsFixed(2)} RON',
+                                          style: TextStyle(
+                                              fontSize: 12.0,
+                                              fontWeight: FontWeight.bold,
+                                              backgroundColor: Colors.amber),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }).toList(),
+                            )
+                          ],
+                        ),
                       ),
                     );
                   },

@@ -18,13 +18,18 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AddedProductsContainer(
-      builder: (BuildContext context, List<Product> addedProducts) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text('Cart'),
-          ),
-          body: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Cart'),
+      ),
+      body: AddedProductsContainer(
+        builder: (BuildContext context, List<Product> addedProducts) {
+          if (addedProducts.isEmpty) {
+            return const Center(
+              child: Text('There are no products in the cart'),
+            );
+          }
+          return Column(
             children: <Widget>[
               Container(
                 height: MediaQuery.of(context).size.height * 0.65,
@@ -41,7 +46,7 @@ class CartPage extends StatelessWidget {
                           child: ListTile(
                             leading: Image.network('${addedProducts[index].image}'),
                             title: Text('${addedProducts[index].title}'),
-                            trailing: Text('${addedProducts[index].price} RON'),
+                            trailing: Text('${addedProducts[index].price.toStringAsFixed(2)} RON'),
                             contentPadding: const EdgeInsets.all(3.0),
                           ),
                         ),
@@ -59,7 +64,7 @@ class CartPage extends StatelessWidget {
                       ],
                     );
                   },
-                ), // todo: make a listview and add a '-' button to remove items
+                ), //
               ),
               const Divider(
                 indent: 20.0,
@@ -120,7 +125,6 @@ class CartPage extends StatelessWidget {
                         Radius.circular(20),
                       ),
                     ),
-
                     height: 50.0,
                     width: 150.0,
                     child: Column(
@@ -129,14 +133,13 @@ class CartPage extends StatelessWidget {
                         Icon(Icons.home),
                       ],
                     ),
-                    //todo: follow the courier on google maps using api or display a timer to show the remaining time left until courier arrives
                   ),
                 ],
               )
             ],
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

@@ -15,6 +15,7 @@ class AddedProductsContainer extends StatelessWidget {
     return StoreConnector<ShopState, List<Product>>(
       converter: (Store<ShopState> store) => store.state.auth.addedProducts.toList(),
       builder: builder,
+
     );
   }
 }

@@ -58,7 +58,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Registration'),
-        //todo: firebase authentication to be implemented
       ),
       body: RegistrationInfoContainer(
         builder: (BuildContext context, RegistrationInfo info) {
