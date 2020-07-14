@@ -8,7 +8,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.8.0 <3.0.0"
+  sdk: ">=2.8.4 <3.0.0"
 
 dependencies:
   flutter:
@@ -18,7 +18,7 @@ dependencies:
   cloud_firestore: ^0.13.7
   redux: ^4.0.0
   flutter_redux: ^0.6.0
-  email_validator: ^1.0.4
+  email_validator: ^1.0.5
   built_value: ^7.1.0
   built_collection: ^4.3.2
   redux_epics: ^0.14.0

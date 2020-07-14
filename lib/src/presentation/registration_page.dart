@@ -27,7 +27,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   DateTime selectedDate = DateTime.now();
   final TextEditingController _date = TextEditingController();
 
-  Future<DateTime> _selectDate(BuildContext context) async {
+  Future<void> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
         context: context, initialDate: selectedDate, firstDate: DateTime(1901, 1), lastDate: DateTime.now());
     if (picked != null && picked != selectedDate) {
@@ -35,7 +35,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         selectedDate = picked;
         _date.value = TextEditingValue(text: picked.toString());
       });
-    } return selectedDate;
+    }
   }
 
   void _result(dynamic action) {

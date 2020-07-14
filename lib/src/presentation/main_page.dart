@@ -85,12 +85,6 @@ class _MainPageState extends State<MainPage> {
                     width: MediaQuery.of(context).size.width * 0.50,
                     child: Drawer(
                       child: Scaffold(
-                        appBar: AppBar(
-                          title: Text(
-                            'Choose a store,\n ${user.name}',
-                            style: const TextStyle(fontSize: 16.0),
-                          ),
-                        ),
                         body: Container(
                           child: ListView.builder(
                             itemCount: shops.length,
