@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'package:algolia/algolia.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';

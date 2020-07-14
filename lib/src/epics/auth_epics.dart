@@ -1,4 +1,3 @@
-import 'package:built_value/built_value.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:redux_epics/redux_epics.dart';
@@ -9,7 +8,6 @@ import 'package:shop_chop/src/actions/auth/logout.dart';
 import 'package:shop_chop/src/actions/auth/sign_up.dart';
 import 'package:shop_chop/src/actions/shop/search_for_products.dart';
 import 'package:shop_chop/src/data/auth_api.dart';
-import 'package:shop_chop/src/models/auth/auth_state.dart';
 import 'package:shop_chop/src/models/auth/shop_user.dart';
 import 'package:shop_chop/src/models/shop/product.dart';
 import 'package:shop_chop/src/models/shop_state.dart';

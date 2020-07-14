@@ -15,7 +15,6 @@ import 'package:shop_chop/src/presentation/cart_page.dart';
 import 'package:shop_chop/src/presentation/home.dart';
 import 'package:shop_chop/src/presentation/login_page.dart';
 import 'package:shop_chop/src/presentation/main_page.dart';
-import 'package:shop_chop/src/presentation/product_page.dart';
 import 'package:shop_chop/src/presentation/registration_page.dart';
 import 'package:shop_chop/src/presentation/search_page.dart';
 import 'package:shop_chop/src/reducer/reducer.dart';
@@ -48,11 +47,11 @@ Future<void> main() async {
     ],
   )..dispatch(InitializeApp());
 
-  runApp(InstagramClone(store: store));
+  runApp(ChopShop(store: store));
 }
 
-class InstagramClone extends StatelessWidget {
-  const InstagramClone({Key key, this.store}) : super(key: key);
+class ChopShop extends StatelessWidget {
+  const ChopShop({Key key, this.store}) : super(key: key);
 
   final Store<ShopState> store;
 
@@ -66,12 +65,11 @@ class InstagramClone extends StatelessWidget {
         ),
         home: const Home(),
         routes: <String, WidgetBuilder>{
-          MainPage.id: (BuildContext context) => MainPage(),
-          LoginPage.id: (BuildContext context) => LoginPage(),
-          RegistrationPage.id: (BuildContext context) => RegistrationPage(),
-          CartPage.id: (BuildContext context) => CartPage(),
-          ProductPage.id: (BuildContext context) => ProductPage(),
-          SearchPage.id: (BuildContext context) => SearchPage(),
+          MainPage.id: (BuildContext context) => const MainPage(),
+          LoginPage.id: (BuildContext context) => const LoginPage(),
+          RegistrationPage.id: (BuildContext context) => const RegistrationPage(),
+          CartPage.id: (BuildContext context) => const CartPage(),
+          SearchPage.id: (BuildContext context) => const SearchPage(),
         },
       ),
     );

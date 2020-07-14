@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -40,7 +38,7 @@ class CartPage extends StatelessWidget {
                     return Stack(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.only(right: 50.0),
+                          padding: const EdgeInsets.only(right: 48.0),
                           child: ListTile(
                             leading: Image.network('${addedProducts[index].image}'),
                             title: Text('${addedProducts[index].title}'),
@@ -73,14 +71,14 @@ class CartPage extends StatelessWidget {
               Align(
                 alignment: Alignment.topRight,
                 child: Container(
-                  padding: EdgeInsets.only(right: 20),
+                  padding: const EdgeInsets.only(right: 18),
                   child: Text(
                     'Total: ${addedProducts.map<double>((Product m) => m.price).reduce((double a, double b) => a + b).toStringAsFixed(2)} RON',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -120,7 +118,7 @@ class CartPage extends StatelessWidget {
                             ),
                             content: SingleChildScrollView(
                               child: ListBody(
-                                children: <Widget>[
+                                children: const <Widget>[
                                   Text('ETA 60 minutes'),
                                 ],
                               ),

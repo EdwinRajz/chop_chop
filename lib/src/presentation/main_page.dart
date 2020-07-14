@@ -11,7 +11,6 @@ import 'package:shop_chop/src/containers/products_container.dart';
 import 'package:shop_chop/src/containers/user_container.dart';
 import 'package:shop_chop/src/layouts/shop_list.dart';
 import 'package:shop_chop/src/models/auth/shop_user.dart';
-import 'package:shop_chop/src/models/shop/discount.dart';
 import 'package:shop_chop/src/models/shop/product.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 import 'package:shop_chop/src/presentation/product_page.dart';

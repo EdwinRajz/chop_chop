@@ -1,8 +1,6 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:path/path.dart';
 import 'package:meta/meta.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:shop_chop/src/models/shop/discount.dart';
 import 'package:shop_chop/src/models/shop/product.dart';
 
@@ -10,11 +8,11 @@ class ProductApi {
   const ProductApi({@required Firestore firestore, @required FirebaseStorage storage})
       : assert(firestore != null),
         assert(storage != null),
-        _firestore = firestore,
-        _storage = storage;
+        _firestore = firestore;
+
 
   final Firestore _firestore;
-  final FirebaseStorage _storage;
+
 
   Stream<List<Product>> listen() {
     return _firestore //

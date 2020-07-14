@@ -66,7 +66,7 @@ class _SearchPageState extends State<SearchPage> {
                           color: Colors.white70,
                           borderRadius: BorderRadius.circular(14.0),
                         ),
-                        padding: EdgeInsets.all(6.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Text(
                           '${product.price} RON',
                           style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),

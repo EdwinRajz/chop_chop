@@ -5,8 +5,6 @@ import 'package:shop_chop/src/actions/auth/login.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 import 'package:shop_chop/src/presentation/registration_page.dart';
 
-import 'main_page.dart';
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
   static const String id = 'Login';
@@ -30,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
         children: <Widget>[
           const SizedBox(height: 16.0),
           Container(
-            margin: EdgeInsets.only(left: 125.0,right: 125.0),
+            margin: const EdgeInsets.symmetric(horizontal: 124.0),
             width: 130,
             height: 130,
             decoration: BoxDecoration(

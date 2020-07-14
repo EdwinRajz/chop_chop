@@ -3,12 +3,10 @@ import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shop_chop/src/actions/actions.dart';
 import 'package:shop_chop/src/actions/initialize_app.dart';
-import 'package:shop_chop/src/actions/shop/listen_for_products.dart';
 import 'package:shop_chop/src/data/auth_api.dart';
 import 'package:shop_chop/src/data/product_api.dart';
 import 'package:shop_chop/src/epics/products_epics.dart';
 import 'package:shop_chop/src/models/auth/shop_user.dart';
-import 'package:shop_chop/src/models/shop/product.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 
 import 'auth_epics.dart';
