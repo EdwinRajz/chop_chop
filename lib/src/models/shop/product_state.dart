@@ -18,7 +18,8 @@ abstract class ProductState implements Built<ProductState, ProductStateBuilder> 
 
   BuiltList<Product> get products;
 
-  BuiltList<Discount> get discounts;
+  // productId
+  BuiltMap<String, Discount> get discounts;
 
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this);
 

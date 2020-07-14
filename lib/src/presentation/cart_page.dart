@@ -1,11 +1,10 @@
-import 'dart:ui';
+import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:shop_chop/src/actions/shop/delete_from_cart.dart';
 import 'package:shop_chop/src/containers/added_products_container.dart';
-import 'package:shop_chop/src/layouts/shop_list.dart';
 import 'package:shop_chop/src/models/shop/product.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 
@@ -13,7 +12,6 @@ class CartPage extends StatelessWidget {
   const CartPage({
     Key key,
   }) : super(key: key);
-
   static const String id = 'Cart';
 
   @override
@@ -93,11 +91,11 @@ class CartPage extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 5,
                           blurRadius: 7,
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                         ),
                       ],
                       color: Colors.pink,
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(20),
                       ),
                     ),
@@ -105,33 +103,55 @@ class CartPage extends StatelessWidget {
                     width: 150.0,
                     child: Column(
                       children: <Widget>[
-                        Text('Pick up at store'),
+                        const Text('Pick up at store'),
                         Icon(Icons.directions_run),
                       ],
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      boxShadow: <BoxShadow>[
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: const Offset(0, 3),
+                  InkWell(
+                    onTap: () {
+                      return showDialog<void>(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Center(
+                              child: Text('Estimated time until arrival'),
+                            ),
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: <Widget>[
+                                  Text('ETA 60 minutes'),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                        color: Colors.green[200],
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(20),
                         ),
-                      ],
-                      color: Colors.green[200],
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20),
                       ),
-                    ),
-                    height: 50.0,
-                    width: 150.0,
-                    child: Column(
-                      children: <Widget>[
-                        Text('Home delivery'),
-                        Icon(Icons.home),
-                      ],
+                      height: 50.0,
+                      width: 150.0,
+                      child: Column(
+                        children: <Widget>[
+                          const Text('Home delivery'),
+                          Icon(Icons.home),
+                        ],
+                      ),
                     ),
                   ),
                 ],

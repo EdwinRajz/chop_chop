@@ -25,8 +25,8 @@ class _$ProductStateSerializer implements StructuredSerializer<ProductState> {
               const FullType(BuiltList, const [const FullType(Product)])),
       'discounts',
       serializers.serialize(object.discounts,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(Discount)])),
+          specifiedType: const FullType(BuiltMap,
+              const [const FullType(String), const FullType(Discount)])),
     ];
 
     return result;
@@ -51,9 +51,8 @@ class _$ProductStateSerializer implements StructuredSerializer<ProductState> {
           break;
         case 'discounts':
           result.discounts.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(Discount)]))
-              as BuiltList<Object>);
+              specifiedType: const FullType(BuiltMap,
+                  const [const FullType(String), const FullType(Discount)])));
           break;
       }
     }
@@ -66,7 +65,7 @@ class _$ProductState extends ProductState {
   @override
   final BuiltList<Product> products;
   @override
-  final BuiltList<Discount> discounts;
+  final BuiltMap<String, Discount> discounts;
 
   factory _$ProductState([void Function(ProductStateBuilder) updates]) =>
       (new ProductStateBuilder()..update(updates)).build();
@@ -118,10 +117,10 @@ class ProductStateBuilder
       _$this._products ??= new ListBuilder<Product>();
   set products(ListBuilder<Product> products) => _$this._products = products;
 
-  ListBuilder<Discount> _discounts;
-  ListBuilder<Discount> get discounts =>
-      _$this._discounts ??= new ListBuilder<Discount>();
-  set discounts(ListBuilder<Discount> discounts) =>
+  MapBuilder<String, Discount> _discounts;
+  MapBuilder<String, Discount> get discounts =>
+      _$this._discounts ??= new MapBuilder<String, Discount>();
+  set discounts(MapBuilder<String, Discount> discounts) =>
       _$this._discounts = discounts;
 
   ProductStateBuilder();
