@@ -9,10 +9,8 @@ import 'package:shop_chop/src/models/shop/product.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 import 'package:shop_chop/src/models/shop/product_state.dart';
 
-
 import 'auth/auth_state.dart';
 import 'auth/registration_info.dart';
-
 
 part 'serializers.g.dart';
 
@@ -23,5 +21,5 @@ part 'serializers.g.dart';
   RegistrationInfo,
 ])
 Serializers serializers = (_$serializers.toBuilder() //
-  ..addPlugin(StandardJsonPlugin()))
+      ..addPlugin(StandardJsonPlugin()))
     .build();

@@ -24,7 +24,8 @@ ProductState _addToCart(ProductState state, AddToCart action) {
 ProductState _onDiscountEvent(ProductState state, OnDiscountsEvent action) {
   return state.rebuild((ProductStateBuilder b) {
     for (Discount discount in action.discounts) {
-      b..discounts[discount.productId] = discount
+      b
+        ..discounts[discount.productId] = discount
         ..discounts[discount.discount.toString()];
     }
   });

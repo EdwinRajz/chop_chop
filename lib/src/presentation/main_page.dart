@@ -208,14 +208,8 @@ class _MainPageState extends State<MainPage> {
                                     builder: (BuildContext context) {
                                       return Stack(
                                         children: <Widget>[
-                                          Image.network(
-                                            '${product.image}',
-                                          ),
-                                          Image.asset(
-                                            'assets/discount.png',
-                                            width: 80.0,
-                                            height: 60.0,
-                                          ),
+                                          Image.network('${product.image}'),
+                                          Image.asset('assets/discount.png', width: 80.0, height: 60.0),
                                           Text(
                                             '${discountedPrice.toStringAsFixed(2)} RON',
                                             style: TextStyle(

@@ -92,7 +92,8 @@ class _LoginPageState extends State<LoginPage> {
           ),
           const SizedBox(height: 32.0),
           Container(
-            margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.3,right: MediaQuery.of(context).size.width * 0.3),
+            margin: EdgeInsets.only(
+                left: MediaQuery.of(context).size.width * 0.3, right: MediaQuery.of(context).size.width * 0.3),
             child: RaisedButton(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25.0),
@@ -106,8 +107,6 @@ class _LoginPageState extends State<LoginPage> {
                   StoreProvider.of<ShopState>(context).dispatch(Login(email, password));
                 }
               },
-
-
               child: const Text('Sign in'),
             ),
           ),

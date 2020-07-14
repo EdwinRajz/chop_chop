@@ -10,7 +10,7 @@ abstract class SignUp //
     implements
         Built<SignUp, SignUpBuilder>,
         AppAction //
-    {
+{
   factory SignUp(ActionResult result) {
     return _$SignUp((SignUpBuilder b) {
       b.result = result;
@@ -27,7 +27,7 @@ abstract class SignUpSuccessful //
         Built<SignUpSuccessful, SignUpSuccessfulBuilder>,
         UserAction,
         AppAction //
-    {
+{
   factory SignUpSuccessful(ShopUser user) {
     return _$SignUpSuccessful((SignUpSuccessfulBuilder b) {
       b.user = user.toBuilder();
@@ -39,15 +39,18 @@ abstract class SignUpSuccessful //
   @override
   ShopUser get user;
 }
+
 abstract class SignUpError //
     implements
         Built<SignUpError, SignUpErrorBuilder>,
         ErrorAction //
-    {
+{
   factory SignUpError(Object error) {
     return _$SignUpError((SignUpErrorBuilder b) => b.error = error);
   }
+
   SignUpError._();
+
   @override
   Object get error;
 }

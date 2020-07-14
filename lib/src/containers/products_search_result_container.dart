@@ -4,7 +4,6 @@ import 'package:redux/redux.dart';
 import 'package:shop_chop/src/models/shop/product.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 
-
 class ProductSearchResultContainer extends StatelessWidget {
   const ProductSearchResultContainer({Key key, @required this.builder}) : super(key: key);
 

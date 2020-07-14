@@ -33,7 +33,6 @@ abstract class RegistrationInfo implements Built<RegistrationInfo, RegistrationI
   @nullable
   String get address;
 
-
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this);
 
   static Serializer<RegistrationInfo> get serializer => _$registrationInfoSerializer;

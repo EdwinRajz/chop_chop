@@ -42,7 +42,7 @@ AuthState _addToCart(AuthState state, AddToCart action) {
 }
 
 AuthState _deleteFromCart(AuthState state, DeleteFromCart action) {
-  return state.rebuild((AuthStateBuilder b){
+  return state.rebuild((AuthStateBuilder b) {
     b.addedProducts.remove(action.product);
   });
 }

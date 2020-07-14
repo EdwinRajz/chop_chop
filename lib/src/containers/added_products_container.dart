@@ -4,7 +4,6 @@ import 'package:redux/redux.dart';
 import 'package:shop_chop/src/models/shop/product.dart';
 import 'package:shop_chop/src/models/shop_state.dart';
 
-
 class AddedProductsContainer extends StatelessWidget {
   const AddedProductsContainer({Key key, @required this.builder}) : super(key: key);
 
@@ -15,7 +14,6 @@ class AddedProductsContainer extends StatelessWidget {
     return StoreConnector<ShopState, List<Product>>(
       converter: (Store<ShopState> store) => store.state.auth.addedProducts.toList(),
       builder: builder,
-
     );
   }
 }

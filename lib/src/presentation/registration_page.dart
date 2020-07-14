@@ -90,8 +90,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   },
                   onChanged: (String value) {
                     final RegistrationInfo newInfo = info.rebuild((RegistrationInfoBuilder b) => b.name = value);
-                    StoreProvider.of<ShopState>(context).dispatch(
-                        UpdateRegistrationInfo(newInfo));
+                    StoreProvider.of<ShopState>(context).dispatch(UpdateRegistrationInfo(newInfo));
                   },
                 ),
                 const SizedBox(height: 16.0),

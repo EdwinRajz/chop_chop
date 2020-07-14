@@ -10,9 +10,7 @@ class ProductApi {
         assert(storage != null),
         _firestore = firestore;
 
-
   final Firestore _firestore;
-
 
   Stream<List<Product>> listen() {
     return _firestore //

@@ -60,7 +60,9 @@ class AuthEpics {
     return actions //
         .debounceTime(const Duration(milliseconds: 500))
         .switchMap((SearchForProducts action) => _authApi
-            .searchProducts(query: action.query,)
+            .searchProducts(
+              query: action.query,
+            )
             .asStream()
             .map<AppAction>((List<Product> products) => SearchForProductsSuccessful(products))
             .onErrorReturnWith((dynamic error) => SearchForProductsError(error)));
