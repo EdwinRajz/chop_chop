@@ -19,6 +19,8 @@ import 'package:shop_chop/src/presentation/registration_page.dart';
 import 'package:shop_chop/src/presentation/search_page.dart';
 import 'package:shop_chop/src/reducer/reducer.dart';
 
+//changed to channel dev
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //FirebaseAuth.instance.signOut();
