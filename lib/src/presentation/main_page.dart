@@ -53,7 +53,7 @@ class _MainPageState extends State<MainPage> {
                     title: const Text('Shop Chop'),
                     actions: <Widget>[
                       IconButton(
-                        icon: Icon(Icons.search),
+                        icon: const Icon(Icons.search),
                         onPressed: () {
                           Navigator.pushNamed(context, SearchPage.id);
                         },
@@ -68,7 +68,7 @@ class _MainPageState extends State<MainPage> {
                         ),
                         animationType: BadgeAnimationType.slide,
                         child: IconButton(
-                          icon: Icon(Icons.shopping_cart),
+                          icon: const Icon(Icons.shopping_cart),
                           onPressed: () {
                             Navigator.pushNamed(context, CartPage.id);
                           },
@@ -76,7 +76,7 @@ class _MainPageState extends State<MainPage> {
                       ),
                       const SizedBox(width: 3.0),
                       IconButton(
-                        icon: Icon(Icons.clear),
+                        icon: const Icon(Icons.clear),
                         onPressed: _showMyDialog,
                       ),
                     ],
@@ -93,7 +93,7 @@ class _MainPageState extends State<MainPage> {
                                 color: Colors.green,
                                 child: Text(
                                   '${shops[index]}',
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36.0),
+                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 36.0),
                                 ),
                               );
                             },
@@ -141,7 +141,7 @@ class _MainPageState extends State<MainPage> {
                                     padding: const EdgeInsets.all(6.0),
                                     child: Text(
                                       '${products[index].price.toStringAsFixed(2)} RON',
-                                      style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+                                      style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                   footer: Container(
@@ -172,7 +172,7 @@ class _MainPageState extends State<MainPage> {
                                                   AddToCart(products[index]),
                                                 );
                                               },
-                                              child: Icon(Icons.add),
+                                              child: const Icon(Icons.add),
                                             ),
                                           ),
                                         ),
@@ -212,7 +212,7 @@ class _MainPageState extends State<MainPage> {
                                           Image.asset('assets/discount.png', width: 80.0, height: 60.0),
                                           Text(
                                             '${discountedPrice.toStringAsFixed(2)} RON',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 12.0,
                                                 fontWeight: FontWeight.bold,
                                                 backgroundColor: Colors.amber),

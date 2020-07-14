@@ -69,12 +69,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 TextFormField(
                   keyboardType: TextInputType.text,
                   obscureText: false,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     prefixIcon: Icon(
                       Icons.person,
                       color: Colors.green,
                     ),
-                    contentPadding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                    contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.green, width: 3.0),
                     ),
@@ -97,12 +97,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 TextFormField(
                   obscureText: false,
                   keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     prefixIcon: Icon(
                       Icons.email,
                       color: Colors.green,
                     ),
-                    contentPadding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                    contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.green, width: 3.0),
                     ),
@@ -130,8 +130,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     child: TextFormField(
                       controller: _date,
                       keyboardType: TextInputType.datetime,
-                      decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                      decoration: const InputDecoration(
+                        contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.green, width: 3.0),
                         ),
@@ -148,12 +148,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(height: 16.0),
                 TextFormField(
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     prefixIcon: Icon(
                       Icons.vpn_key,
                       color: Colors.green,
                     ),
-                    contentPadding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                    contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.green, width: 3.0),
                     ),
@@ -170,12 +170,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 const SizedBox(height: 16.0),
                 TextFormField(
                   obscureText: false,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     prefixIcon: Icon(
                       Icons.home,
                       color: Colors.green,
                     ),
-                    contentPadding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                    contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.green, width: 3.0),
                     ),
@@ -195,12 +195,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 TextFormField(
                   keyboardType: TextInputType.phone,
                   obscureText: false,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     prefixIcon: Icon(
                       Icons.phone_android,
                       color: Colors.green,
                     ),
-                    contentPadding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                    contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.green, width: 3.0),
                     ),

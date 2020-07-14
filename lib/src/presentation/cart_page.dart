@@ -49,7 +49,7 @@ class CartPage extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerRight,
                           child: IconButton(
-                            icon: Icon(Icons.delete),
+                            icon: const Icon(Icons.delete),
                             onPressed: () {
                               StoreProvider.of<ShopState>(context).dispatch(
                                 DeleteFromCart(addedProducts[index]),
@@ -74,7 +74,7 @@ class CartPage extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 18),
                   child: Text(
                     'Total: ${addedProducts.map<double>((Product m) => m.price).reduce((double a, double b) => a + b).toStringAsFixed(2)} RON',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
                   ),
                 ),
               ),
@@ -100,8 +100,8 @@ class CartPage extends StatelessWidget {
                     height: 50.0,
                     width: 150.0,
                     child: Column(
-                      children: <Widget>[
-                        const Text('Pick up at store'),
+                      children: const <Widget>[
+                        Text('Pick up at store'),
                         Icon(Icons.directions_run),
                       ],
                     ),
@@ -145,8 +145,8 @@ class CartPage extends StatelessWidget {
                       height: 50.0,
                       width: 150.0,
                       child: Column(
-                        children: <Widget>[
-                          const Text('Home delivery'),
+                        children: const <Widget>[
+                          Text('Home delivery'),
                           Icon(Icons.home),
                         ],
                       ),

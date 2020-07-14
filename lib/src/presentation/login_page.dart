@@ -50,13 +50,13 @@ class _LoginPageState extends State<LoginPage> {
           TextFormField(
             obscureText: false,
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               prefixIcon: Icon(
                 Icons.email,
                 color: Colors.green,
               ),
-              contentPadding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-              enabledBorder: const UnderlineInputBorder(
+              contentPadding:  EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+              enabledBorder:  UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.green, width: 3.0),
               ),
               labelText: 'email',
@@ -76,13 +76,13 @@ class _LoginPageState extends State<LoginPage> {
           ),
           TextFormField(
             obscureText: true,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               prefixIcon: Icon(
                 Icons.vpn_key,
                 color: Colors.green,
               ),
-              contentPadding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-              enabledBorder: const UnderlineInputBorder(
+              contentPadding:  EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+              enabledBorder:  UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.green, width: 3.0),
               ),
               labelText: 'password',

@@ -30,7 +30,7 @@ class _SearchPageState extends State<SearchPage> {
               child: TextField(
                 controller: _query,
                 maxLines: 1,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'search for a product',
                   border: InputBorder.none,
                   suffixIcon: Icon(Icons.search),
@@ -69,7 +69,7 @@ class _SearchPageState extends State<SearchPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           '${product.price} RON',
-                          style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
                         ),
                       ),
                       footer: Container(
