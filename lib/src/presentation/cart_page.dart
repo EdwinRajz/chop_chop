@@ -114,12 +114,19 @@ class CartPage extends StatelessWidget {
                         builder: (BuildContext context) {
                           return AlertDialog(
                             title: const Center(
-                              child: Text('Estimated time until arrival'),
+                              child: Text('You will receive a call when your order is ready.'),
                             ),
                             content: SingleChildScrollView(
+                              padding: const EdgeInsets.symmetric(horizontal: 96.0),
                               child: ListBody(
-                                children: const <Widget>[
-                                  Text('ETA 60 minutes'),
+                                children: <Widget>[
+                                  RaisedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    color: Colors.green,
+                                    child: const Text('OK'),
+                                  )
                                 ],
                               ),
                             ),

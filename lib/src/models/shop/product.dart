@@ -5,7 +5,6 @@ import 'package:meta/meta.dart';
 import 'package:built_value/serializer.dart';
 import 'package:shop_chop/src/models/serializers.dart';
 
-
 part 'product.g.dart';
 
 abstract class Product implements Built<Product, ProductBuilder> {

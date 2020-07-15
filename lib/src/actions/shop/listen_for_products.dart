@@ -17,7 +17,6 @@ abstract class ListenForProducts //
   factory ListenForProducts([void Function(ListenForProductsBuilder b) updates]) = _$ListenForProducts;
 
   ListenForProducts._();
-
 }
 
 abstract class ListenForProductsSuccessful //

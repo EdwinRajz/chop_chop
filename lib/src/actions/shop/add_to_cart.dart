@@ -21,8 +21,6 @@ abstract class AddToCart //
   AddToCart._();
 
   Product get product;
-
-
 }
 
 abstract class AddToCartSuccessful //

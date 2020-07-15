@@ -19,8 +19,6 @@ abstract class Discount implements Built<Discount, DiscountBuilder> {
 
   double get discount;
 
-
-
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this);
 
   static Serializer<Discount> get serializer => _$discountSerializer;

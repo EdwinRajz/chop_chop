@@ -12,11 +12,11 @@ abstract class DeleteFromCart //
         Built<DeleteFromCart, DeleteFromCartBuilder>,
         AppAction //
 {
-  factory DeleteFromCart(Product product)  {
-    return _$DeleteFromCart((DeleteFromCartBuilder b){
+  factory DeleteFromCart(Product product) {
+    return _$DeleteFromCart((DeleteFromCartBuilder b) {
       b.product = product.toBuilder();
-    } );
-}
+    });
+  }
 
   DeleteFromCart._();
 
@@ -28,10 +28,10 @@ abstract class DeleteFromCartSuccessful //
         Built<DeleteFromCartSuccessful, DeleteFromCartSuccessfulBuilder>,
         AppAction //
 {
-  factory DeleteFromCartSuccessful(Product product)  {
-    return _$DeleteFromCartSuccessful((DeleteFromCartSuccessfulBuilder b){
+  factory DeleteFromCartSuccessful(Product product) {
+    return _$DeleteFromCartSuccessful((DeleteFromCartSuccessfulBuilder b) {
       b.product = product.toBuilder();
-    } );
+    });
   }
 
   DeleteFromCartSuccessful._();
