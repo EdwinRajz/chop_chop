@@ -19,7 +19,6 @@ import 'package:shop_chop/src/presentation/registration_page.dart';
 import 'package:shop_chop/src/presentation/search_page.dart';
 import 'package:shop_chop/src/reducer/reducer.dart';
 
-//changed to channel dev
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +27,7 @@ Future<void> main() async {
     auth: FirebaseAuth.instance,
     firestore: Firestore.instance,
     index:
-        const Algolia.init(applicationId: 'QBA7WQDNJ8', apiKey: 'a80adfd77bad4b1d0b77c7217e29cb57').index('products'),
+        const Algolia.init(applicationId: 'key here', apiKey: 'key here').index('products'),
   );
 
   final ProductApi productApi = ProductApi(

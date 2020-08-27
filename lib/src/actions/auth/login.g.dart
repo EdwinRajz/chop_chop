@@ -12,7 +12,8 @@ class _$Login extends Login {
   @override
   final String password;
 
-  factory _$Login([void Function(LoginBuilder) updates]) => (new LoginBuilder()..update(updates)).build();
+  factory _$Login([void Function(LoginBuilder) updates]) =>
+      (new LoginBuilder()..update(updates)).build();
 
   _$Login._({this.email, this.password}) : super._() {
     if (email == null) {
@@ -24,7 +25,8 @@ class _$Login extends Login {
   }
 
   @override
-  Login rebuild(void Function(LoginBuilder) updates) => (toBuilder()..update(updates)).build();
+  Login rebuild(void Function(LoginBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   LoginBuilder toBuilder() => new LoginBuilder()..replace(this);
@@ -42,7 +44,10 @@ class _$Login extends Login {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Login')..add('email', email)..add('password', password)).toString();
+    return (newBuiltValueToStringHelper('Login')
+          ..add('email', email)
+          ..add('password', password))
+        .toString();
   }
 }
 
@@ -50,15 +55,11 @@ class LoginBuilder implements Builder<Login, LoginBuilder> {
   _$Login _$v;
 
   String _email;
-
   String get email => _$this._email;
-
   set email(String email) => _$this._email = email;
 
   String _password;
-
   String get password => _$this._password;
-
   set password(String password) => _$this._password = password;
 
   LoginBuilder();
@@ -107,10 +108,12 @@ class _$LoginSuccessful extends LoginSuccessful {
   }
 
   @override
-  LoginSuccessful rebuild(void Function(LoginSuccessfulBuilder) updates) => (toBuilder()..update(updates)).build();
+  LoginSuccessful rebuild(void Function(LoginSuccessfulBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
-  LoginSuccessfulBuilder toBuilder() => new LoginSuccessfulBuilder()..replace(this);
+  LoginSuccessfulBuilder toBuilder() =>
+      new LoginSuccessfulBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -125,17 +128,17 @@ class _$LoginSuccessful extends LoginSuccessful {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('LoginSuccessful')..add('user', user)).toString();
+    return (newBuiltValueToStringHelper('LoginSuccessful')..add('user', user))
+        .toString();
   }
 }
 
-class LoginSuccessfulBuilder implements Builder<LoginSuccessful, LoginSuccessfulBuilder> {
+class LoginSuccessfulBuilder
+    implements Builder<LoginSuccessful, LoginSuccessfulBuilder> {
   _$LoginSuccessful _$v;
 
   ShopUserBuilder _user;
-
   ShopUserBuilder get user => _$this._user ??= new ShopUserBuilder();
-
   set user(ShopUserBuilder user) => _$this._user = user;
 
   LoginSuccessfulBuilder();
@@ -172,7 +175,8 @@ class LoginSuccessfulBuilder implements Builder<LoginSuccessful, LoginSuccessful
         _$failedField = 'user';
         user.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError('LoginSuccessful', _$failedField, e.toString());
+        throw new BuiltValueNestedFieldError(
+            'LoginSuccessful', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -195,7 +199,8 @@ class _$LoginError extends LoginError {
   }
 
   @override
-  LoginError rebuild(void Function(LoginErrorBuilder) updates) => (toBuilder()..update(updates)).build();
+  LoginError rebuild(void Function(LoginErrorBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   LoginErrorBuilder toBuilder() => new LoginErrorBuilder()..replace(this);
@@ -213,7 +218,8 @@ class _$LoginError extends LoginError {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('LoginError')..add('error', error)).toString();
+    return (newBuiltValueToStringHelper('LoginError')..add('error', error))
+        .toString();
   }
 }
 
@@ -221,9 +227,7 @@ class LoginErrorBuilder implements Builder<LoginError, LoginErrorBuilder> {
   _$LoginError _$v;
 
   Object _error;
-
   Object get error => _$this._error;
-
   set error(Object error) => _$this._error = error;
 
   LoginErrorBuilder();
